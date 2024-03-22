@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="style.css" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Map</title>
+	</head>
+	<body>
+		<canvas id="map" width="1200" height="1000"></canvas>
+
+		<!-- RIVE  -->
+		<script src="https://unpkg.com/@rive-app/canvas@2.9.1"></script>
+
+		<script>
+			const map = new rive.Rive({
+				src: "map.riv",
+				canvas: document.getElementById("map"),
+				autoplay: true,
+				stateMachines: "State Machine 1",
+			});
+		</script>
+	</body>
+</html>
