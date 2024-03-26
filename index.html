@@ -7,18 +7,39 @@
 		<title>Map</title>
 	</head>
 	<body>
-		<canvas id="map" width="3840" height="2168"></canvas>
+		<div id="player">
+			<h1>Player Selection</h1>
+			<input
+				type="range"
+				name="playerSelection"
+				id="playerSelection"
+				min="0"
+				max="3"
+				value="0"
+				oninput="selectPlayer(this.value)"
+			/>
+		<canvas id="firstFloor" width="3840" height="2168"></canvas>
 
 		<!-- RIVE  -->
 		<script src="https://unpkg.com/@rive-app/canvas@2.9.1"></script>
 
 		<script>
-			const map = new rive.Rive({
-				src: "firstFloor.riv",
-				canvas: document.getElementById("map"),
+			let playerSelector;
+
+			const firstFloor = new rive.Rive({
+				src: "firstFloor.riv", //get rive file
+				canvas: document.getElementById("firstFloor"), //get correct canvas
 				autoplay: true,
-				stateMachines: "First Floor",
+				stateMachines: "First Floor", // get correct stateMachine
+				onLoad: () => {
+					const inputs = firstFloor.stateMachineInputs("First Floor");
+					playerSelector = inputs.find((i) => i.name === "playerSelector");
+					playerSelector.value = 0; //initial value
+				},
 			});
+			const selectPlayer = (n) => {
+				playerSelector.value = n;
+			};
 		</script>
 	</body>
 </html>
