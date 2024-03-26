@@ -18,6 +18,54 @@
 				value="0"
 				oninput="selectPlayer(this.value)"
 			/>
+			<label for="playerSelection">player selection</label>
+		</div>
+		<div id="lessonsDone">
+			<h1>Lessons done</h1>
+			<input
+				type="checkbox"
+				name="Lesson 01"
+				id="Lesson01"
+				onchange="lessonOne(this.value)"
+			/>
+			<label for="Lesson01">Lesson 01</label>
+			<input
+				type="checkbox"
+				name="Lesson 02"
+				id="Lesson02"
+				onchange="lessonTwo(this.value)"
+			/>
+			<label for="Lesson02">Lesson 02</label>
+			<input
+				type="checkbox"
+				name="Lesson 03"
+				id="Lesson03"
+				onchange="lessonThree(this.value)"
+			/>
+			<label for="Lesson03">Lesson 03</label>
+			<input
+				type="checkbox"
+				name="Lesson 04"
+				id="Lesson04"
+				onchange="lessonFour(this.value)"
+			/>
+			<label for="Lesson04">Lesson 04</label>
+			<input
+				type="checkbox"
+				name="Lesson 05"
+				id="Lesson05"
+				onchange="lessonFive(this.value)"
+			/>
+			<label for="Lesson05">Lesson 05</label>
+			<input
+				type="checkbox"
+				name="Lesson 06"
+				id="Lesson06"
+				onchange="lessonSix(this.value)"
+			/>
+			<label for="Lesson06">Lesson 06</label>
+		</div>
+
 		<canvas id="firstFloor" width="3840" height="2168"></canvas>
 
 		<!-- RIVE  -->
@@ -25,7 +73,12 @@
 
 		<script>
 			let playerSelector;
-
+			let lesson1;
+			let lesson2;
+			let lesson3;
+			let lesson4;
+			let lesson5;
+			let lesson6;
 			const firstFloor = new rive.Rive({
 				src: "firstFloor.riv", //get rive file
 				canvas: document.getElementById("firstFloor"), //get correct canvas
@@ -35,10 +88,34 @@
 					const inputs = firstFloor.stateMachineInputs("First Floor");
 					playerSelector = inputs.find((i) => i.name === "playerSelector");
 					playerSelector.value = 0; //initial value
+					lesson1done = inputs.find((i) => i.name === "done 1");
+					lesson2done = inputs.find((i) => i.name === "done 2");
+					lesson3done = inputs.find((i) => i.name === "done 3");
+					lesson4done = inputs.find((i) => i.name === "done 4");
+					lesson5done = inputs.find((i) => i.name === "done 5");
+					lesson6done = inputs.find((i) => i.name === "done 6");
 				},
 			});
 			const selectPlayer = (n) => {
 				playerSelector.value = n;
+			};
+			const lessonOne = (n) => {
+				lesson1done.value = n;
+			};
+			const lessonTwo = (n) => {
+				lesson2done.value = n;
+			};
+			const lessonThree = (n) => {
+				lesson3done.value = n;
+			};
+			const lessonFour = (n) => {
+				lesson4done.value = n;
+			};
+			const lessonFive = (n) => {
+				lesson5done.value = n;
+			};
+			const lessonSix = (n) => {
+				lesson6done.value = n;
 			};
 		</script>
 	</body>
