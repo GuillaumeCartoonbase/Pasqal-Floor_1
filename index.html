@@ -75,6 +75,7 @@
 		<script>
 			// Change marble's color [0, 1 , 2, 3]
 			let playerSelector;
+			let playerID = 0; // Var to change player in JS
 
 			// Lessons status
 			let lesson1;
@@ -100,7 +101,7 @@
 
 					// Change marble's color
 					playerSelector = inputs.find((i) => i.name === "playerSelector");
-					playerSelector.value = 0; //initial value
+					playerSelector.value = playerID; //initial value
 
 					// Change lesson done status
 					lesson1done = inputs.find((i) => i.name === "done 1");
