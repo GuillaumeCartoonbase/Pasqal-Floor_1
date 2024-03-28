@@ -96,6 +96,16 @@
 					lesson6done = inputs.find((i) => i.name === "done 6");
 				},
 			});
+
+			// Resize the drawing surface if the window resizes
+			window.addEventListener(
+				"resize",
+				() => {
+					riveInstance.resizeDrawingSurfaceToCanvas();
+				},
+				false
+			);
+
 			const selectPlayer = (n) => {
 				playerSelector.value = n;
 			};
