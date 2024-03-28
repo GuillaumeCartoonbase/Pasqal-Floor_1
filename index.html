@@ -67,6 +67,7 @@
 		</div>
 
 		<canvas id="firstFloor" width="1920" height="1084"></canvas>
+		<p id="testButton">Lesson Event</p>
 
 		<!-- RIVE  -->
 		<script src="https://unpkg.com/@rive-app/canvas@2.9.1"></script>
@@ -84,6 +85,7 @@
 				canvas: document.getElementById("firstFloor"), //get correct canvas
 				autoplay: true,
 				stateMachines: "First Floor", // get correct stateMachine
+				automaticallyHandleEvents: true, // Automatically handle RiveHTTPEvents
 				onLoad: () => {
 					const inputs = firstFloor.stateMachineInputs("First Floor");
 					playerSelector = inputs.find((i) => i.name === "playerSelector");
@@ -105,6 +107,16 @@
 				},
 				false
 			);
+
+			// Get Events
+			const testButton = document.getElementById("testButton");
+			const onRiveEventReceived = (riveEvent) => {
+				const eventData = riveEvent.data;
+				console.log(eventData.name);
+				console.log(eventData.properties);
+				testButton.innerHTML = eventData.name;
+			};
+			firstFloor.on(rive.EventType.RiveEvent, onRiveEventReceived);
 
 			const selectPlayer = (n) => {
 				playerSelector.value = n;
