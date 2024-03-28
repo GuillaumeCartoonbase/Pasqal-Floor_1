@@ -78,12 +78,13 @@
 			let playerID = 0; // Var to change player in JS
 
 			// Lessons status
-			let lesson1;
-			let lesson2;
-			let lesson3;
-			let lesson4;
-			let lesson5;
-			let lesson6;
+			let isLesson1Done;
+			let isLesson2Done;
+			let isLesson3Done;
+			let isLesson4Done;
+			let isLesson5Done;
+			let isLesson6Done;
+			let isLessonsDone = [false, false, false, false, false, false]; // Initial value
 
 			// Create Rive
 			const firstFloor = new rive.Rive({
@@ -104,12 +105,18 @@
 					playerSelector.value = playerID; //initial value
 
 					// Change lesson done status
-					lesson1done = inputs.find((i) => i.name === "done 1");
-					lesson2done = inputs.find((i) => i.name === "done 2");
-					lesson3done = inputs.find((i) => i.name === "done 3");
-					lesson4done = inputs.find((i) => i.name === "done 4");
-					lesson5done = inputs.find((i) => i.name === "done 5");
-					lesson6done = inputs.find((i) => i.name === "done 6");
+					isLesson1Done = inputs.find((i) => i.name === "done 1");
+					isLesson2Done = inputs.find((i) => i.name === "done 2");
+					isLesson3Done = inputs.find((i) => i.name === "done 3");
+					isLesson4Done = inputs.find((i) => i.name === "done 4");
+					isLesson5Done = inputs.find((i) => i.name === "done 5");
+					isLesson6Done = inputs.find((i) => i.name === "done 6");
+					isLesson1Done.value = isLessonsDone[0];
+					isLesson2Done.value = isLessonsDone[1];
+					isLesson3Done.value = isLessonsDone[2];
+					isLesson4Done.value = isLessonsDone[3];
+					isLesson5Done.value = isLessonsDone[4];
+					isLesson6Done.value = isLessonsDone[5];
 				},
 			});
 
@@ -139,22 +146,22 @@
 
 			// Lesson Status from HTML
 			const lessonOne = (n) => {
-				lesson1done.value = n;
+				isLesson1Done.value = n;
 			};
 			const lessonTwo = (n) => {
-				lesson2done.value = n;
+				isLesson2Done.value = n;
 			};
 			const lessonThree = (n) => {
-				lesson3done.value = n;
+				isLesson3Done.value = n;
 			};
 			const lessonFour = (n) => {
-				lesson4done.value = n;
+				isLesson4Done.value = n;
 			};
 			const lessonFive = (n) => {
-				lesson5done.value = n;
+				isLesson5Done.value = n;
 			};
 			const lessonSix = (n) => {
-				lesson6done.value = n;
+				isLesson6Done.value = n;
 			};
 		</script>
 	</body>
