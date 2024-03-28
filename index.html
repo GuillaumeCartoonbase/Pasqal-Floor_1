@@ -57,7 +57,7 @@
 			let isLessonsDone = [false, false, false, false, false, false]; // Initial value
 
 			// Create Rive
-			const firstFloor = new rive.Rive({
+			const riveInstance = new rive.Rive({
 				src: "firstFloor.riv", //get rive file
 				canvas: document.getElementById("firstFloor"), //get correct canvas
 				autoplay: true,
@@ -65,10 +65,10 @@
 				automaticallyHandleEvents: true, // Automatically handle RiveHTTPEvents
 				onLoad: () => {
 					// Prevent a blurry canvas by using the device pixel ratio
-					firstFloor.resizeDrawingSurfaceToCanvas();
+					riveInstance.resizeDrawingSurfaceToCanvas();
 
 					// Get inputs
-					const inputs = firstFloor.stateMachineInputs("First Floor");
+					const inputs = riveInstance.stateMachineInputs("First Floor");
 
 					// Change marble's color
 					playerSelector = inputs.find((i) => i.name === "playerSelector");
@@ -107,7 +107,7 @@
 				console.log(eventData.properties);
 				testButton.innerHTML = eventData.name;
 			};
-			firstFloor.on(rive.EventType.RiveEvent, onRiveEventReceived);
+			riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 
 			// Player selector from HTML
 			const selectPlayer = (n) => {
