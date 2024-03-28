@@ -22,47 +22,17 @@
 		</div>
 		<div id="lessonsDone">
 			<h1>Lessons done</h1>
-			<input
-				type="checkbox"
-				name="Lesson 01"
-				id="Lesson01"
-				onchange="lessonOne(this.value)"
-			/>
+			<input type="checkbox" name="Lesson 01" id="Lesson01" />
 			<label for="Lesson01">Lesson 01</label>
-			<input
-				type="checkbox"
-				name="Lesson 02"
-				id="Lesson02"
-				onchange="lessonTwo(this.value)"
-			/>
+			<input type="checkbox" name="Lesson 02" id="Lesson02" />
 			<label for="Lesson02">Lesson 02</label>
-			<input
-				type="checkbox"
-				name="Lesson 03"
-				id="Lesson03"
-				onchange="lessonThree(this.value)"
-			/>
+			<input type="checkbox" name="Lesson 03" id="Lesson03" />
 			<label for="Lesson03">Lesson 03</label>
-			<input
-				type="checkbox"
-				name="Lesson 04"
-				id="Lesson04"
-				onchange="lessonFour(this.value)"
-			/>
+			<input type="checkbox" name="Lesson 04" id="Lesson04" />
 			<label for="Lesson04">Lesson 04</label>
-			<input
-				type="checkbox"
-				name="Lesson 05"
-				id="Lesson05"
-				onchange="lessonFive(this.value)"
-			/>
+			<input type="checkbox" name="Lesson 05" id="Lesson05" />
 			<label for="Lesson05">Lesson 05</label>
-			<input
-				type="checkbox"
-				name="Lesson 06"
-				id="Lesson06"
-				onchange="lessonSix(this.value)"
-			/>
+			<input type="checkbox" name="Lesson 06" id="Lesson06" />
 			<label for="Lesson06">Lesson 06</label>
 		</div>
 
@@ -144,25 +114,33 @@
 				playerSelector.value = n;
 			};
 
-			// Lesson Status from HTML
-			const lessonOne = (n) => {
-				isLesson1Done.value = n;
-			};
-			const lessonTwo = (n) => {
-				isLesson2Done.value = n;
-			};
-			const lessonThree = (n) => {
-				isLesson3Done.value = n;
-			};
-			const lessonFour = (n) => {
-				isLesson4Done.value = n;
-			};
-			const lessonFive = (n) => {
-				isLesson5Done.value = n;
-			};
-			const lessonSix = (n) => {
-				isLesson6Done.value = n;
-			};
+			// Get Checkboxes
+			const checkLesson1 = document.getElementById("Lesson01");
+			const checkLesson2 = document.getElementById("Lesson02");
+			const checkLesson3 = document.getElementById("Lesson03");
+			const checkLesson4 = document.getElementById("Lesson04");
+			const checkLesson5 = document.getElementById("Lesson05");
+			const checkLesson6 = document.getElementById("Lesson06");
+
+			// Switchers
+			checkLesson1.addEventListener("change", (e) => {
+				isLesson1Done.value = e.target.checked;
+			});
+			checkLesson2.addEventListener("change", (e) => {
+				isLesson2Done.value = e.target.checked;
+			});
+			checkLesson3.addEventListener("change", (e) => {
+				isLesson3Done.value = e.target.checked;
+			});
+			checkLesson4.addEventListener("change", (e) => {
+				isLesson4Done.value = e.target.checked;
+			});
+			checkLesson5.addEventListener("change", (e) => {
+				isLesson5Done.value = e.target.checked;
+			});
+			checkLesson6.addEventListener("change", (e) => {
+				isLesson6Done.value = e.target.checked;
+			});
 		</script>
 	</body>
 </html>
