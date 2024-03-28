@@ -73,13 +73,18 @@
 		<script src="https://unpkg.com/@rive-app/canvas@2.9.1"></script>
 
 		<script>
+			// Change marble's color [0, 1 , 2, 3]
 			let playerSelector;
+
+			// Lessons status
 			let lesson1;
 			let lesson2;
 			let lesson3;
 			let lesson4;
 			let lesson5;
 			let lesson6;
+
+			// Create Rive
 			const firstFloor = new rive.Rive({
 				src: "firstFloor.riv", //get rive file
 				canvas: document.getElementById("firstFloor"), //get correct canvas
@@ -87,9 +92,17 @@
 				stateMachines: "First Floor", // get correct stateMachine
 				automaticallyHandleEvents: true, // Automatically handle RiveHTTPEvents
 				onLoad: () => {
+					// Prevent a blurry canvas by using the device pixel ratio
+					firstFloor.resizeDrawingSurfaceToCanvas();
+
+					// Get inputs
 					const inputs = firstFloor.stateMachineInputs("First Floor");
+
+					// Change marble's color
 					playerSelector = inputs.find((i) => i.name === "playerSelector");
 					playerSelector.value = 0; //initial value
+
+					// Change lesson done status
 					lesson1done = inputs.find((i) => i.name === "done 1");
 					lesson2done = inputs.find((i) => i.name === "done 2");
 					lesson3done = inputs.find((i) => i.name === "done 3");
@@ -118,9 +131,12 @@
 			};
 			firstFloor.on(rive.EventType.RiveEvent, onRiveEventReceived);
 
+			// Player selector from HTML
 			const selectPlayer = (n) => {
 				playerSelector.value = n;
 			};
+
+			// Lesson Status from HTML
 			const lessonOne = (n) => {
 				lesson1done.value = n;
 			};
