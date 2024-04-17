@@ -105,6 +105,7 @@ riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 const eventLog = document.getElementById("eventsInfo");
 const eventConsoleLogger = (riveEvent) => {
 	const eventData = riveEvent.data;
+	console.log(eventData.properties);
 	eventLog.innerHTML = `event name: ${eventData.name}
     <br>
     event object keys: ${Object.keys(eventData.properties)}
@@ -112,6 +113,7 @@ const eventConsoleLogger = (riveEvent) => {
     event object values: ${Object.values(eventData.properties)}
     `;
 };
+
 riveInstance.on(rive.EventType.RiveEvent, eventConsoleLogger);
 
 // Player selector from HTML
