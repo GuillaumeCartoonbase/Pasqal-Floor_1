@@ -11,6 +11,7 @@ let isLesson5Done;
 let isLesson6Done;
 let isLessonsDone = [false, false, false, false, false, false]; // Initial value
 
+// Lessons hovers
 let isLesson1Hover;
 let isLesson2Hover;
 let isLesson3Hover;
@@ -18,12 +19,14 @@ let isLesson4Hover;
 let isLesson5Hover;
 let isLesson6Hover;
 
+// Lessons triggers
 let triggerA;
 let triggerB;
 let triggerC;
 let triggerD;
 let triggerE;
-let triggerf;
+let triggerF;
+
 // Create Rive
 const riveInstance = new rive.Rive({
 	src: "firstFloor.riv", //get rive file
@@ -98,6 +101,7 @@ const onRiveEventReceived = (riveEvent) => {
 
 riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 
+// Event intel watcher
 const eventLog = document.getElementById("eventsInfo");
 const eventConsoleLogger = (riveEvent) => {
 	const eventData = riveEvent.data;
@@ -143,6 +147,7 @@ checkLesson6.addEventListener("change", (e) => {
 	isLesson6Done.value = e.target.checked;
 });
 
+// Cards Lessons Hover Status
 const card1hover = () => {
 	isLesson1Hover.value = true;
 };
@@ -180,6 +185,7 @@ const card6nohover = () => {
 	isLesson6Hover.value = false;
 };
 
+// Card Lessons Click
 const card1click = () => {
 	triggerA.fire(); // fire trigger
 };
