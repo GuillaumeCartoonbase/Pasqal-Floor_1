@@ -20,23 +20,78 @@
 			/>
 			<label for="playerSelection">player selection</label>
 		</div>
+		<div id="cards">
+			<div
+				id="card 1"
+				class="card"
+				onmouseover="card1hover()"
+				onmouseleave="card1nohover()"
+				onclick="card1click()"
+			>
+				<p>Lesson 1</p>
+			</div>
+			<div
+				id="card 2"
+				class="card"
+				onmouseover="card2hover()"
+				onmouseleave="card2nohover()"
+				onclick="card2click()"
+			>
+				<p>Lesson 2</p>
+			</div>
+			<div
+				id="card 3"
+				class="card"
+				onmouseover="card3hover()"
+				onmouseleave="card3nohover()"
+				onclick="card3click()"
+			>
+				<p>Lesson 3</p>
+			</div>
+			<div
+				id="card 4"
+				class="card"
+				onmouseover="card4hover()"
+				onmouseleave="card4nohover()"
+				onclick="card4click()"
+			>
+				<p>Lesson 4</p>
+			</div>
+			<div
+				id="card 5"
+				class="card"
+				onmouseover="card5hover()"
+				onmouseleave="card5nohover()"
+				onclick="card5click()"
+			>
+				<p>Lesson 5</p>
+			</div>
+			<div
+				id="card 6"
+				class="card"
+				onmouseover="card6hover()"
+				onmouseleave="card6nohover()"
+				onclick="card6click()"
+			>
+				<p>Lesson 6</p>
+			</div>
+		</div>
 		<div id="lessonsDone">
-			<h1>Lessons done</h1>
-			<p>Lesson Event: <b id="testButton">Click a button</b></p>
-			<input type="checkbox" name="Lesson 01" id="Lesson01" />
-			<label for="Lesson01">Lesson 01</label>
-			<input type="checkbox" name="Lesson 02" id="Lesson02" />
-			<label for="Lesson02">Lesson 02</label>
-			<input type="checkbox" name="Lesson 03" id="Lesson03" />
-			<label for="Lesson03">Lesson 03</label>
-			<input type="checkbox" name="Lesson 04" id="Lesson04" />
-			<label for="Lesson04">Lesson 04</label>
-			<input type="checkbox" name="Lesson 05" id="Lesson05" />
-			<label for="Lesson05">Lesson 05</label>
-			<input type="checkbox" name="Lesson 06" id="Lesson06" />
-			<label for="Lesson06">Lesson 06</label>
+			<input type="checkbox" name="Lesson 01" id="Lesson01" class="isdone" />
+			<label for="Lesson01"></label>
+			<input type="checkbox" name="Lesson 02" id="Lesson02" class="isdone" />
+			<label for="Lesson02"></label>
+			<input type="checkbox" name="Lesson 03" id="Lesson03" class="isdone" />
+			<label for="Lesson03"></label>
+			<input type="checkbox" name="Lesson 04" id="Lesson04" class="isdone" />
+			<label for="Lesson04"></label>
+			<input type="checkbox" name="Lesson 05" id="Lesson05" class="isdone" />
+			<label for="Lesson05"></label>
+			<input type="checkbox" name="Lesson 06" id="Lesson06" class="isdone" />
+			<label for="Lesson06"></label>
 		</div>
 
+		<p>Lesson Event: <b id="testButton">Click a button</b></p>
 		<canvas id="firstFloor" width="1920" height="1084"></canvas>
 
 		<!-- RIVE  -->
@@ -56,6 +111,19 @@
 			let isLesson6Done;
 			let isLessonsDone = [false, false, false, false, false, false]; // Initial value
 
+			let isLesson1Hover;
+			let isLesson2Hover;
+			let isLesson3Hover;
+			let isLesson4Hover;
+			let isLesson5Hover;
+			let isLesson6Hover;
+
+			let triggerA;
+			let triggerB;
+			let triggerC;
+			let triggerD;
+			let triggerE;
+			let triggerf;
 			// Create Rive
 			const riveInstance = new rive.Rive({
 				src: "firstFloor.riv", //get rive file
@@ -71,22 +139,38 @@
 					const inputs = riveInstance.stateMachineInputs("First Floor");
 
 					// Change marble's color
-					playerSelector = inputs.find((i) => i.name === "playerSelector");
+					playerSelector = inputs.find((i) => i.name === "playerProfile");
 					playerSelector.value = playerID; //initial value
 
 					// Change lesson done status
-					isLesson1Done = inputs.find((i) => i.name === "done 1");
-					isLesson2Done = inputs.find((i) => i.name === "done 2");
-					isLesson3Done = inputs.find((i) => i.name === "done 3");
-					isLesson4Done = inputs.find((i) => i.name === "done 4");
-					isLesson5Done = inputs.find((i) => i.name === "done 5");
-					isLesson6Done = inputs.find((i) => i.name === "done 6");
+					isLesson1Done = inputs.find((i) => i.name === "Check Lesson 1");
+					isLesson2Done = inputs.find((i) => i.name === "Check Lesson 2");
+					isLesson3Done = inputs.find((i) => i.name === "Check Lesson 3");
+					isLesson4Done = inputs.find((i) => i.name === "Check Lesson 4");
+					isLesson5Done = inputs.find((i) => i.name === "Check Lesson 5");
+					isLesson6Done = inputs.find((i) => i.name === "Check Lesson 6");
 					isLesson1Done.value = isLessonsDone[0];
 					isLesson2Done.value = isLessonsDone[1];
 					isLesson3Done.value = isLessonsDone[2];
 					isLesson4Done.value = isLessonsDone[3];
 					isLesson5Done.value = isLessonsDone[4];
 					isLesson6Done.value = isLessonsDone[5];
+
+					// HOVER
+					isLesson1Hover = inputs.find((i) => i.name === "Lesson 1 Hover");
+					isLesson2Hover = inputs.find((i) => i.name === "Lesson 2 Hover");
+					isLesson3Hover = inputs.find((i) => i.name === "Lesson 3 Hover");
+					isLesson4Hover = inputs.find((i) => i.name === "Lesson 4 Hover");
+					isLesson5Hover = inputs.find((i) => i.name === "Lesson 5 Hover");
+					isLesson6Hover = inputs.find((i) => i.name === "Lesson 6 Hover");
+
+					// Triggers
+					triggerA = inputs.find((i) => i.name === "Trigger A");
+					triggerB = inputs.find((i) => i.name === "Trigger B");
+					triggerC = inputs.find((i) => i.name === "Trigger C");
+					triggerD = inputs.find((i) => i.name === "Trigger D");
+					triggerE = inputs.find((i) => i.name === "Trigger E");
+					triggerF = inputs.find((i) => i.name === "Trigger F");
 				},
 			});
 
@@ -142,6 +226,63 @@
 			checkLesson6.addEventListener("change", (e) => {
 				isLesson6Done.value = e.target.checked;
 			});
+
+			const card1hover = () => {
+				isLesson1Hover.value = true;
+			};
+			const card1nohover = () => {
+				isLesson1Hover.value = false;
+			};
+			const card2hover = () => {
+				isLesson2Hover.value = true;
+			};
+			const card2nohover = () => {
+				isLesson2Hover.value = false;
+			};
+			const card3hover = () => {
+				isLesson3Hover.value = true;
+			};
+			const card3nohover = () => {
+				isLesson3Hover.value = false;
+			};
+			const card4hover = () => {
+				isLesson4Hover.value = true;
+			};
+			const card4nohover = () => {
+				isLesson4Hover.value = false;
+			};
+			const card5hover = () => {
+				isLesson5Hover.value = true;
+			};
+			const card5nohover = () => {
+				isLesson5Hover.value = false;
+			};
+			const card6hover = () => {
+				isLesson6Hover.value = true;
+			};
+			const card6nohover = () => {
+				isLesson6Hover.value = false;
+			};
+
+			const card1click = () => {
+				triggerA.fire(); // fire trigger
+			};
+			const card2click = () => {
+				triggerB.fire(); // fire trigger
+			};
+			const card3click = () => {
+				triggerC.fire(); // fire trigger
+			};
+			const card4click = () => {
+				triggerD.fire(); // fire trigger
+			};
+			const card5click = () => {
+				triggerE.fire(); // fire trigger
+			};
+			const card6click = () => {
+				triggerF.fire(); // fire trigger
+			};
+			console.log();
 		</script>
 	</body>
 </html>

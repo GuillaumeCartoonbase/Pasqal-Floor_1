@@ -1,3 +1,27 @@
 canvas {
 	width: 1000px;
 }
+
+#cards {
+	display: flex;
+	justify-content: center;
+}
+.card {
+	text-align: center;
+	background-color: grey;
+	width: 100px;
+	margin: 5px;
+}
+.card:hover {
+	background-color: lightgray;
+	cursor: pointer;
+}
+
+#lessonsDone {
+	display: flex;
+	justify-content: center;
+}
+.isdone {
+	width: 100px;
+	margin: 5px;
+}
