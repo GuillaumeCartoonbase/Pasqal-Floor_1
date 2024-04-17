@@ -5,6 +5,7 @@ canvas {
 #cards {
 	display: flex;
 	justify-content: center;
+	width: 700px;
 }
 .card {
 	text-align: center;
@@ -20,6 +21,7 @@ canvas {
 #lessonsDone {
 	display: flex;
 	justify-content: center;
+	width: 700px;
 }
 .isdone {
 	width: 100px;
