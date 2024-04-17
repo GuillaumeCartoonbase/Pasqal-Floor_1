@@ -98,11 +98,15 @@ const onRiveEventReceived = (riveEvent) => {
 
 riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 
+const eventLog = document.getElementById("eventsInfo");
 const eventConsoleLogger = (riveEvent) => {
 	const eventData = riveEvent.data;
-	console.log(eventData.name);
-	console.log(eventData.properties);
-	console.log(eventData.properties.lesson);
+	eventLog.innerHTML = `event name: ${eventData.name}
+    <br>
+    event object keys: ${Object.keys(eventData.properties)}
+    <br>
+    event object values: ${Object.values(eventData.properties)}
+    `;
 };
 riveInstance.on(rive.EventType.RiveEvent, eventConsoleLogger);
 
