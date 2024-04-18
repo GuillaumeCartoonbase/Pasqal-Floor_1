@@ -29,7 +29,7 @@ let triggerF;
 
 // Create Rive
 const riveInstance = new rive.Rive({
-	src: "firstFloor.riv", //get rive file
+	src: "src/floor-1.riv", //get rive file
 	canvas: document.getElementById("firstFloor"), //get correct canvas
 	autoplay: true,
 	stateMachines: "First Floor", // get correct stateMachine
