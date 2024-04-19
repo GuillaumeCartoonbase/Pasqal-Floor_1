@@ -48,9 +48,18 @@ let inputLessonCounter;
 
 const lessonCounter = () => {
 	let total = 0;
-	for (let i = 0; i < areLessonsDone.length; i++) {
-		total += areLessonsDone[i] == true ? 1 : 0;
-	}
+
+	// for (let i = 0; i < areLessonsDone.length; i++) {
+	// 	total += areLessonsDone[i] == true ? 1 : 0;
+	// }
+
+	total += isLesson1Done.value ? 1 : 0;
+	total += isLesson2Done.value ? 1 : 0;
+	total += isLesson3Done.value ? 1 : 0;
+	total += isLesson4Done.value ? 1 : 0;
+	total += isLesson5Done.value ? 1 : 0;
+	total += isLesson6Done.value ? 1 : 0;
+
 	return total;
 };
 
@@ -118,7 +127,7 @@ const riveInstance = new rive.Rive({
 
 		triggerCardStart = inputs.find((i) => i.name === "card button trigger");
 
-		inputLessonCounter = inputs.find((i) => i.name === "test lesson");
+		inputLessonCounter = inputs.find((i) => i.name === "LessonCounter");
 		inputLessonCounter.value = lessonCounter();
 	},
 });
@@ -192,21 +201,27 @@ const checkLesson6 = document.getElementById("Lesson06");
 // Switchers
 checkLesson1.addEventListener("change", (e) => {
 	isLesson1Done.value = e.target.checked;
+	inputLessonCounter.value = lessonCounter();
 });
 checkLesson2.addEventListener("change", (e) => {
 	isLesson2Done.value = e.target.checked;
+	inputLessonCounter.value = lessonCounter();
 });
 checkLesson3.addEventListener("change", (e) => {
 	isLesson3Done.value = e.target.checked;
+	inputLessonCounter.value = lessonCounter();
 });
 checkLesson4.addEventListener("change", (e) => {
 	isLesson4Done.value = e.target.checked;
+	inputLessonCounter.value = lessonCounter();
 });
 checkLesson5.addEventListener("change", (e) => {
 	isLesson5Done.value = e.target.checked;
+	inputLessonCounter.value = lessonCounter();
 });
 checkLesson6.addEventListener("change", (e) => {
 	isLesson6Done.value = e.target.checked;
+	inputLessonCounter.value = lessonCounter();
 });
 
 // Cards Lessons Hover Status
