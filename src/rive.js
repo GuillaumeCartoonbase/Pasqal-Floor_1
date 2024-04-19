@@ -35,12 +35,12 @@ let isLesson5Hover;
 let isLesson6Hover;
 
 // Lessons triggers
-let triggerA;
-let triggerB;
-let triggerC;
-let triggerD;
-let triggerE;
-let triggerF;
+let trigger1;
+let trigger2;
+let trigger3;
+let trigger4;
+let trigger5;
+let trigger6;
 
 // Create Rive
 const riveInstance = new rive.Rive({

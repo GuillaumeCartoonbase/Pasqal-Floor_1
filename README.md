@@ -97,6 +97,53 @@ Rive Input names:
 
 #### Setup in JS
 
+To fire the marble movement :
+
+```js
+trigger1.fire(); // movement to lesson 1
+```
+
+Trigger movement from web
+
+```html
+<div onclick="card1click()"></div>
+```
+
+```js
+const card1click = () => {
+	trigger1.fire(); // fire trigger
+};
+```
+
+### Hover
+
+To set the status hovering on the lessons
+(boolean)
+
+Rive Input names:
+
+- `Lesson 1 Hover`
+- `Lesson 2 Hover`
+- `Lesson 3 Hover`
+- `Lesson 4 Hover`
+- `Lesson 5 Hover`
+- `Lesson 6 Hover`
+
+```html
+<div onmouseover="card1hover()" onmouseleave="card1nohover()"></div>
+```
+
+```js
+isLesson1Hover = inputs.find((i) => i.name === "Lesson 1 Hover");
+
+const card1hover = () => {
+	isLesson1Hover.value = true;
+};
+const card1nohover = () => {
+	isLesson1Hover.value = false;
+};
+```
+
 ### Player Status
 
 To change the marble's color depending on the user profile.
