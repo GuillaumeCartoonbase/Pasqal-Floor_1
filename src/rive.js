@@ -4,7 +4,7 @@ let playerID = 0; // Var to change player in JS
 // Lessons status
 let areLessonsDone = [false, false, false, false, false, false]; // Initial value
 
-// Lesson progress
+// Lesson progress, 0-100
 
 let progressLessons = [0, 0, 0, 0, 0, 0];
 
@@ -117,8 +117,8 @@ riveInstance.on(rive.EventType.RiveEvent, eventFire);
 const eventLog = document.getElementById("eventsInfo");
 const eventConsoleLogger = (riveEvent) => {
 	const eventData = riveEvent.data;
-	console.log(eventData.name);
-	console.log(eventData.properties);
+	console.log("event name:", eventData.name);
+	console.log("event properties", eventData.properties);
 	eventLog.innerHTML = `event name: ${eventData.name}
     <br>
     event object keys: ${Object.keys(eventData.properties)}
@@ -208,7 +208,6 @@ const card6nohover = () => {
 
 // Card Lessons Click
 const card1click = () => {
-	console.log("hey");
 	trigger1.fire(); // fire trigger
 };
 const card2click = () => {
