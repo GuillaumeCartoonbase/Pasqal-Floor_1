@@ -44,6 +44,16 @@ let trigger6;
 
 let triggerCardStart;
 
+let inputLessonCounter;
+
+const lessonCounter = () => {
+	let total = 0;
+	for (let i = 0; i < isLessonsDone.length; i++) {
+		total += isLessonsDone[i] == true ? 1 : 0;
+	}
+	return total;
+};
+
 // Create Rive
 const riveInstance = new rive.Rive({
 	src: "src/floor-1.riv", //get rive file
@@ -107,6 +117,9 @@ const riveInstance = new rive.Rive({
 		trigger6 = inputs.find((i) => i.name === "Trigger Lesson 6");
 
 		triggerCardStart = inputs.find((i) => i.name === "card button trigger");
+
+		inputLessonCounter = inputs.find((i) => i.name === "test lesson");
+		inputLessonCounter.value = lessonCounter();
 	},
 });
 
