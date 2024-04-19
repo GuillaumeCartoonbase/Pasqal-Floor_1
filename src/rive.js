@@ -81,7 +81,6 @@ const riveInstance = new rive.Rive({
 		lesson4Completion = inputs.find((i) => i.name === "Lesson progress 4");
 		lesson5Completion = inputs.find((i) => i.name === "Lesson progress 5");
 		lesson6Completion = inputs.find((i) => i.name === "Lesson progress 6");
-
 		lesson1Completion.value = progressLesson1;
 		lesson2Completion.value = progressLesson2;
 		lesson3Completion.value = progressLesson3;
