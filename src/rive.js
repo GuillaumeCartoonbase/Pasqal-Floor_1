@@ -11,6 +11,21 @@ let isLesson5Done;
 let isLesson6Done;
 let isLessonsDone = [false, false, false, false, false, false]; // Initial value
 
+// Lesson progress
+let lesson1Completion;
+let lesson2Completion;
+let lesson3Completion;
+let lesson4Completion;
+let lesson5Completion;
+let lesson6Completion;
+
+let progressLesson1 = 0;
+let progressLesson2 = 0;
+let progressLesson3 = 0;
+let progressLesson4 = 0;
+let progressLesson5 = 0;
+let progressLesson6 = 0;
+
 // Lessons hovers
 let isLesson1Hover;
 let isLesson2Hover;
@@ -58,6 +73,21 @@ const riveInstance = new rive.Rive({
 		isLesson4Done.value = isLessonsDone[3];
 		isLesson5Done.value = isLessonsDone[4];
 		isLesson6Done.value = isLessonsDone[5];
+
+		// Lesson completion
+		lesson1Completion = inputs.find((i) => i.name === "Lesson progress 1");
+		lesson2Completion = inputs.find((i) => i.name === "Lesson progress 2");
+		lesson3Completion = inputs.find((i) => i.name === "Lesson progress 3");
+		lesson4Completion = inputs.find((i) => i.name === "Lesson progress 4");
+		lesson5Completion = inputs.find((i) => i.name === "Lesson progress 5");
+		lesson6Completion = inputs.find((i) => i.name === "Lesson progress 6");
+
+		lesson1Completion.value = progressLesson1;
+		lesson2Completion.value = progressLesson2;
+		lesson3Completion.value = progressLesson3;
+		lesson4Completion.value = progressLesson4;
+		lesson5Completion.value = progressLesson5;
+		lesson6Completion.value = progressLesson6;
 
 		// HOVER
 		isLesson1Hover = inputs.find((i) => i.name === "Lesson 1 Hover");
