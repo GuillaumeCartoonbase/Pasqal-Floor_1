@@ -46,23 +46,6 @@ let triggerCardStart;
 
 let inputLessonCounter;
 
-const lessonCounter = () => {
-	let total = 0;
-
-	// for (let i = 0; i < areLessonsDone.length; i++) {
-	// 	total += areLessonsDone[i] == true ? 1 : 0;
-	// }
-
-	total += isLesson1Done.value ? 1 : 0;
-	total += isLesson2Done.value ? 1 : 0;
-	total += isLesson3Done.value ? 1 : 0;
-	total += isLesson4Done.value ? 1 : 0;
-	total += isLesson5Done.value ? 1 : 0;
-	total += isLesson6Done.value ? 1 : 0;
-
-	return total;
-};
-
 // Create Rive
 const riveInstance = new rive.Rive({
 	src: "src/floor-1.riv", //get rive file
@@ -127,7 +110,7 @@ const riveInstance = new rive.Rive({
 
 		triggerCardStart = inputs.find((i) => i.name === "card button trigger");
 
-		inputLessonCounter = inputs.find((i) => i.name === "LessonCounter");
+		inputLessonCounter = inputs.find((i) => i.name === "lessonCounter");
 	},
 });
 
@@ -279,4 +262,21 @@ const card5click = () => {
 };
 const card6click = () => {
 	trigger6.fire(); // fire trigger
+};
+
+const lessonCounter = () => {
+	let total = 0;
+
+	// for (let i = 0; i < areLessonsDone.length; i++) {
+	// 	total += areLessonsDone[i] == true ? 1 : 0;
+	// }
+
+	total += isLesson1Done.value ? 1 : 0;
+	total += isLesson2Done.value ? 1 : 0;
+	total += isLesson3Done.value ? 1 : 0;
+	total += isLesson4Done.value ? 1 : 0;
+	total += isLesson5Done.value ? 1 : 0;
+	total += isLesson6Done.value ? 1 : 0;
+
+	return total;
 };
