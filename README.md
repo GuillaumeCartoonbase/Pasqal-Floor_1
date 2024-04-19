@@ -48,9 +48,32 @@ isLesson6Done.value = isLessonsDone[5];
 To show the completition percentage on the hover card.
 (integrer, 0-100)
 
+Rive Input names:
+
+- `Lesson progress 1`
+- `Lesson progress 2`
+- `Lesson progress 3`
+- `Lesson progress 4`
+- `Lesson progress 5`
+- `Lesson progress 6`
+
+#### Setup in JS
+
 ### Triggers
 
 To launch a lesson or next level.
+
+Rive Input names:
+
+- `Trigger Lesson 1`
+- `Trigger Lesson 2`
+- `Trigger Lesson 3`
+- `Trigger Lesson 4`
+- `Trigger Lesson 5`
+- `Trigger Lesson 6`
+- `Trigger Next Level`
+
+#### Setup in JS
 
 ### Player Status
 
@@ -72,3 +95,7 @@ Rive Input name: `playerProfile`
 playerSelector = inputs.find((i) => i.name === "playerProfile"); // get rive input
 playerSelector.value = playerID;
 ```
+
+### Events
+
+#### Setup in JS
