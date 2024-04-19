@@ -134,6 +134,7 @@ riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 const eventLog = document.getElementById("eventsInfo");
 const eventConsoleLogger = (riveEvent) => {
 	const eventData = riveEvent.data;
+	console.log(eventData.name);
 	console.log(eventData.properties);
 	eventLog.innerHTML = `event name: ${eventData.name}
     <br>

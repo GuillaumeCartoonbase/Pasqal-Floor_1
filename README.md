@@ -120,4 +120,39 @@ playerSelector.value = playerID;
 
 ### Events
 
+Events return an object
+(booleans, integrers and strings can be used as value)
+
+`console.log()` are in place to show the result and timing.
+
+```js
+console.log(eventData.name);
+console.log(eventData.properties);
+```
+
+```js
+LessonButton = { lesson: 1 };
+NextLevelButton = { level: 2 };
+```
+
 #### Setup in JS
+
+Current example:
+
+```js
+// Get Events
+const demoEvent = document.getElementById("demoEvent");
+
+const onRiveEventReceived = (riveEvent) => {
+	const eventData = riveEvent.data;
+	let text =
+		Object.keys(eventData.properties)[0] === "lesson"
+			? `launch activity #${eventData.properties.lesson} `
+			: `${Object.keys(eventData.properties)[0]} ${
+					Object.values(eventData.properties)[0]
+			  }`;
+	demoEvent.innerHTML = text;
+};
+
+riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
+```
