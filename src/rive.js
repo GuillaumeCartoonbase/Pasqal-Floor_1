@@ -1,50 +1,12 @@
 // Change marble's color [0, 1 , 2, 3]
-let playerSelector;
 let playerID = 0; // Var to change player in JS
 
 // Lessons status
-let isLesson1Done;
-let isLesson2Done;
-let isLesson3Done;
-let isLesson4Done;
-let isLesson5Done;
-let isLesson6Done;
 let areLessonsDone = [false, false, false, false, false, false]; // Initial value
 
 // Lesson progress
-let lesson1Completion;
-let lesson2Completion;
-let lesson3Completion;
-let lesson4Completion;
-let lesson5Completion;
-let lesson6Completion;
 
-let progressLesson1 = 0;
-let progressLesson2 = 0;
-let progressLesson3 = 0;
-let progressLesson4 = 0;
-let progressLesson5 = 0;
-let progressLesson6 = 0;
-
-// Lessons hovers
-let isLesson1Hover;
-let isLesson2Hover;
-let isLesson3Hover;
-let isLesson4Hover;
-let isLesson5Hover;
-let isLesson6Hover;
-
-// Lessons triggers
-let trigger1;
-let trigger2;
-let trigger3;
-let trigger4;
-let trigger5;
-let trigger6;
-
-let triggerCardStart;
-
-let inputLessonCounter;
+let progressLessons = [0, 0, 0, 0, 0, 0];
 
 // Create Rive
 const riveInstance = new rive.Rive({
@@ -85,12 +47,12 @@ const riveInstance = new rive.Rive({
 		lesson4Completion = inputs.find((i) => i.name === "Lesson progress 4");
 		lesson5Completion = inputs.find((i) => i.name === "Lesson progress 5");
 		lesson6Completion = inputs.find((i) => i.name === "Lesson progress 6");
-		lesson1Completion.value = progressLesson1;
-		lesson2Completion.value = progressLesson2;
-		lesson3Completion.value = progressLesson3;
-		lesson4Completion.value = progressLesson4;
-		lesson5Completion.value = progressLesson5;
-		lesson6Completion.value = progressLesson6;
+		lesson6Completion.value = progressLessons[0];
+		lesson1Completion.value = progressLessons[1];
+		lesson2Completion.value = progressLessons[2];
+		lesson3Completion.value = progressLessons[3];
+		lesson4Completion.value = progressLessons[4];
+		lesson5Completion.value = progressLessons[5];
 
 		// HOVER
 		isLesson1Hover = inputs.find((i) => i.name === "Lesson 1 Hover");
@@ -246,6 +208,7 @@ const card6nohover = () => {
 
 // Card Lessons Click
 const card1click = () => {
+	console.log("hey");
 	trigger1.fire(); // fire trigger
 };
 const card2click = () => {

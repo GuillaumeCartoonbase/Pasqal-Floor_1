@@ -11,7 +11,7 @@
 ### Lesson status
 
 To mark a lesson 'done'.
-(boolean)
+(boolean, in array)
 
 Rive Input names:
 
@@ -46,7 +46,7 @@ isLesson6Done.value = areLessonsDone[5];
 ### Lesson Completion
 
 To show the completition percentage on the hover card.
-(integrer, 0-100)
+(integrer, 0-100, in array)
 
 Rive Input names:
 
@@ -60,12 +60,7 @@ Rive Input names:
 #### Setup in JS
 
 ```js
-let progressLesson1 = 0; // 0-100 value
-let progressLesson2 = 0; // 0-100 value
-let progressLesson3 = 0; // 0-100 value
-let progressLesson4 = 0; // 0-100 value
-let progressLesson5 = 0; // 0-100 value
-let progressLesson6 = 0; // 0-100 value
+let progressLessons = [0, 0, 0, 0, 0, 0]; // 0-100 value
 
 lesson1Completion = inputs.find((i) => i.name === "Lesson progress 1"); // get rive input
 lesson2Completion = inputs.find((i) => i.name === "Lesson progress 2"); // get rive input
@@ -73,12 +68,12 @@ lesson3Completion = inputs.find((i) => i.name === "Lesson progress 3"); // get r
 lesson4Completion = inputs.find((i) => i.name === "Lesson progress 4"); // get rive input
 lesson5Completion = inputs.find((i) => i.name === "Lesson progress 5"); // get rive input
 lesson6Completion = inputs.find((i) => i.name === "Lesson progress 6"); // get rive input
-lesson1Completion.value = progressLesson1;
-lesson2Completion.value = progressLesson2;
-lesson3Completion.value = progressLesson3;
-lesson4Completion.value = progressLesson4;
-lesson5Completion.value = progressLesson5;
-lesson6Completion.value = progressLesson6;
+lesson6Completion.value = progressLessons[0];
+lesson1Completion.value = progressLessons[1];
+lesson2Completion.value = progressLessons[2];
+lesson3Completion.value = progressLessons[3];
+lesson4Completion.value = progressLessons[4];
+lesson5Completion.value = progressLessons[5];
 ```
 
 ### Triggers
