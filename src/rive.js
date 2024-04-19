@@ -128,7 +128,6 @@ const riveInstance = new rive.Rive({
 		triggerCardStart = inputs.find((i) => i.name === "card button trigger");
 
 		inputLessonCounter = inputs.find((i) => i.name === "LessonCounter");
-		inputLessonCounter.value = lessonCounter();
 	},
 });
 
