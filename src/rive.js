@@ -68,12 +68,12 @@ const riveInstance = new rive.Rive({
 		isLesson6Hover = inputs.find((i) => i.name === "Lesson 6 Hover");
 
 		// Triggers
-		triggerA = inputs.find((i) => i.name === "Trigger A");
-		triggerB = inputs.find((i) => i.name === "Trigger B");
-		triggerC = inputs.find((i) => i.name === "Trigger C");
-		triggerD = inputs.find((i) => i.name === "Trigger D");
-		triggerE = inputs.find((i) => i.name === "Trigger E");
-		triggerF = inputs.find((i) => i.name === "Trigger F");
+		trigger1 = inputs.find((i) => i.name === "Trigger Lesson 1");
+		trigger2 = inputs.find((i) => i.name === "Trigger Lesson 2");
+		trigger3 = inputs.find((i) => i.name === "Trigger Lesson 3");
+		trigger4 = inputs.find((i) => i.name === "Trigger Lesson 4");
+		trigger5 = inputs.find((i) => i.name === "Trigger Lesson 5");
+		trigger6 = inputs.find((i) => i.name === "Trigger Lesson 6");
 	},
 });
 
@@ -189,20 +189,20 @@ const card6nohover = () => {
 
 // Card Lessons Click
 const card1click = () => {
-	triggerA.fire(); // fire trigger
+	trigger1.fire(); // fire trigger
 };
 const card2click = () => {
-	triggerB.fire(); // fire trigger
+	trigger2.fire(); // fire trigger
 };
 const card3click = () => {
-	triggerC.fire(); // fire trigger
+	trigger3.fire(); // fire trigger
 };
 const card4click = () => {
-	triggerD.fire(); // fire trigger
+	trigger4.fire(); // fire trigger
 };
 const card5click = () => {
-	triggerE.fire(); // fire trigger
+	trigger5.fire(); // fire trigger
 };
 const card6click = () => {
-	triggerF.fire(); // fire trigger
+	trigger6.fire(); // fire trigger
 };
