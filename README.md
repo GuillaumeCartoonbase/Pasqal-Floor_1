@@ -27,7 +27,7 @@ Rive Input names:
 The value is in an array named `isLessonsDone`.
 
 ```js
-let isLessonsDone = [false, false, false, false, false, false]; // Initial value
+let areLessonsDone = [false, false, false, false, false, false]; // Initial value
 
 isLesson1Done = inputs.find((i) => i.name === "isLesson1Done"); // get rive input
 isLesson2Done = inputs.find((i) => i.name === "isLesson2Done"); // get rive input
@@ -35,12 +35,12 @@ isLesson3Done = inputs.find((i) => i.name === "isLesson3Done"); // get rive inpu
 isLesson4Done = inputs.find((i) => i.name === "isLesson4Done"); // get rive input
 isLesson5Done = inputs.find((i) => i.name === "isLesson5Done"); // get rive input
 isLesson6Done = inputs.find((i) => i.name === "isLesson6Done"); // get rive input
-isLesson1Done.value = isLessonsDone[0];
-isLesson2Done.value = isLessonsDone[1];
-isLesson3Done.value = isLessonsDone[2];
-isLesson4Done.value = isLessonsDone[3];
-isLesson5Done.value = isLessonsDone[4];
-isLesson6Done.value = isLessonsDone[5];
+isLesson1Done.value = areLessonsDone[0];
+isLesson2Done.value = areLessonsDone[1];
+isLesson3Done.value = areLessonsDone[2];
+isLesson4Done.value = areLessonsDone[3];
+isLesson5Done.value = areLessonsDone[4];
+isLesson6Done.value = areLessonsDone[5];
 ```
 
 ### Lesson Completion

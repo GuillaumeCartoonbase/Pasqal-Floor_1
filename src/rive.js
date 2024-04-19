@@ -9,7 +9,7 @@ let isLesson3Done;
 let isLesson4Done;
 let isLesson5Done;
 let isLesson6Done;
-let isLessonsDone = [false, false, false, false, false, false]; // Initial value
+let areLessonsDone = [false, false, false, false, false, false]; // Initial value
 
 // Lesson progress
 let lesson1Completion;
@@ -48,8 +48,8 @@ let inputLessonCounter;
 
 const lessonCounter = () => {
 	let total = 0;
-	for (let i = 0; i < isLessonsDone.length; i++) {
-		total += isLessonsDone[i] == true ? 1 : 0;
+	for (let i = 0; i < areLessonsDone.length; i++) {
+		total += areLessonsDone[i] == true ? 1 : 0;
 	}
 	return total;
 };
@@ -79,12 +79,12 @@ const riveInstance = new rive.Rive({
 		isLesson4Done = inputs.find((i) => i.name === "isLesson4Done");
 		isLesson5Done = inputs.find((i) => i.name === "isLesson5Done");
 		isLesson6Done = inputs.find((i) => i.name === "isLesson6Done");
-		isLesson1Done.value = isLessonsDone[0];
-		isLesson2Done.value = isLessonsDone[1];
-		isLesson3Done.value = isLessonsDone[2];
-		isLesson4Done.value = isLessonsDone[3];
-		isLesson5Done.value = isLessonsDone[4];
-		isLesson6Done.value = isLessonsDone[5];
+		isLesson1Done.value = areLessonsDone[0];
+		isLesson2Done.value = areLessonsDone[1];
+		isLesson3Done.value = areLessonsDone[2];
+		isLesson4Done.value = areLessonsDone[3];
+		isLesson5Done.value = areLessonsDone[4];
+		isLesson6Done.value = areLessonsDone[5];
 
 		// Lesson completion
 		lesson1Completion = inputs.find((i) => i.name === "Lesson progress 1");
