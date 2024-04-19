@@ -46,12 +46,12 @@ const riveInstance = new rive.Rive({
 		playerSelector.value = playerID; //initial value
 
 		// Change lesson done status
-		isLesson1Done = inputs.find((i) => i.name === "Check Lesson 1");
-		isLesson2Done = inputs.find((i) => i.name === "Check Lesson 2");
-		isLesson3Done = inputs.find((i) => i.name === "Check Lesson 3");
-		isLesson4Done = inputs.find((i) => i.name === "Check Lesson 4");
-		isLesson5Done = inputs.find((i) => i.name === "Check Lesson 5");
-		isLesson6Done = inputs.find((i) => i.name === "Check Lesson 6");
+		isLesson1Done = inputs.find((i) => i.name === "isLesson1Done");
+		isLesson2Done = inputs.find((i) => i.name === "isLesson2Done");
+		isLesson3Done = inputs.find((i) => i.name === "isLesson3Done");
+		isLesson4Done = inputs.find((i) => i.name === "isLesson4Done");
+		isLesson5Done = inputs.find((i) => i.name === "isLesson5Done");
+		isLesson6Done = inputs.find((i) => i.name === "isLesson6Done");
 		isLesson1Done.value = isLessonsDone[0];
 		isLesson2Done.value = isLessonsDone[1];
 		isLesson3Done.value = isLessonsDone[2];
