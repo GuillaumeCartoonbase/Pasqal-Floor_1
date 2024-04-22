@@ -192,3 +192,24 @@ const onRiveEventReceived = (riveEvent) => {
 
 riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 ```
+
+#### Cursor events
+
+3 events are presents :
+
+- `OnHoverEnter`
+- `OnHoverExit`
+- `OnClick`
+
+```js
+const pointerEvent = (riveEvent) => {
+	const eventData = riveEvent.data;
+	let eventName = eventData.name;
+	if (eventName === "OnHoverEnter")
+		return (document.body.style.cursor = "pointer");
+	if (eventName === "OnHoverExit") return (document.body.style.cursor = "auto");
+	if (eventName === "OnClick") return (document.body.style.cursor = "auto");
+};
+
+riveInstance.on(rive.EventType.RiveEvent, pointerEvent);
+```

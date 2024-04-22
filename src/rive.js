@@ -140,7 +140,7 @@ const lessonCounter = () => {
 	return total;
 };
 
-const mouse = (riveEvent) => {
+const pointerEvent = (riveEvent) => {
 	const eventData = riveEvent.data;
 	let eventName = eventData.name;
 	if (eventName === "OnHoverEnter")
@@ -149,4 +149,4 @@ const mouse = (riveEvent) => {
 	if (eventName === "OnClick") return (document.body.style.cursor = "auto");
 };
 
-riveInstance.on(rive.EventType.RiveEvent, mouse);
+riveInstance.on(rive.EventType.RiveEvent, pointerEvent);
