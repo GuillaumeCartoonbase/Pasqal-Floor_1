@@ -104,13 +104,14 @@ riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 // fire movement on click
 const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
-	if (eventData.properties.cardButton === 1) return trigger1.fire();
-	if (eventData.properties.cardButton === 2) return trigger2.fire();
-	if (eventData.properties.cardButton === 3) return trigger3.fire();
-	if (eventData.properties.cardButton === 4) return trigger4.fire();
-	if (eventData.properties.cardButton === 5) return trigger5.fire();
-	if (eventData.properties.cardButton === 6) return trigger6.fire();
-	if (eventData.properties.cardButton === 200) return triggerNextLevel.fire();
+	let cardButton = eventData.properties.cardButton;
+	if (cardButton === 1) return trigger1.fire();
+	if (cardButton === 2) return trigger2.fire();
+	if (cardButton === 3) return trigger3.fire();
+	if (cardButton === 4) return trigger4.fire();
+	if (cardButton === 5) return trigger5.fire();
+	if (cardButton === 6) return trigger6.fire();
+	if (cardButton === 200) return triggerNextLevel.fire();
 };
 
 riveInstance.on(rive.EventType.RiveEvent, eventFire);
