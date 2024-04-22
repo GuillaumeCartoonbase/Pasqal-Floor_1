@@ -5,6 +5,7 @@ const lessons = 6;
 const inputLessonDone = []; // Lessons status
 const lessonProgress = [];
 const isLessonHover = [];
+const lessonTrigger = [];
 
 // Create Rive
 const riveInstance = new rive.Rive({
@@ -41,17 +42,14 @@ const riveInstance = new rive.Rive({
 			isLessonHover.push(
 				inputs.find((input) => input.name === `Lesson ${i} Hover`)
 			);
+
+			// Triggers
+			lessonTrigger.push(
+				inputs.find((input) => input.name === `Trigger Lesson ${i}`)
+			);
 		}
 
-		// Triggers
-		trigger1 = inputs.find((i) => i.name === "Trigger Lesson 1");
-		trigger2 = inputs.find((i) => i.name === "Trigger Lesson 2");
-		trigger3 = inputs.find((i) => i.name === "Trigger Lesson 3");
-		trigger4 = inputs.find((i) => i.name === "Trigger Lesson 4");
-		trigger5 = inputs.find((i) => i.name === "Trigger Lesson 5");
-		trigger6 = inputs.find((i) => i.name === "Trigger Lesson 6");
 		triggerNextLevel = inputs.find((i) => i.name === "Trigger Next Level");
-
 		triggerCardStart = inputs.find((i) => i.name === "card button trigger");
 
 		inputLessonCounter = inputs.find((i) => i.name === "lessonCounter");
@@ -71,12 +69,12 @@ window.addEventListener(
 const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
 	let cardButton = eventData.properties.cardButton;
-	if (cardButton === 1) return trigger1.fire();
-	if (cardButton === 2) return trigger2.fire();
-	if (cardButton === 3) return trigger3.fire();
-	if (cardButton === 4) return trigger4.fire();
-	if (cardButton === 5) return trigger5.fire();
-	if (cardButton === 6) return trigger6.fire();
+	if (cardButton === 1) return lessonTrigger[0].fire();
+	if (cardButton === 2) return lessonTrigger[1].fire();
+	if (cardButton === 3) return lessonTrigger[2].fire();
+	if (cardButton === 4) return lessonTrigger[3].fire();
+	if (cardButton === 5) return lessonTrigger[4].fire();
+	if (cardButton === 6) return lessonTrigger[5].fire();
 	if (cardButton === 200) return triggerNextLevel.fire();
 };
 
@@ -191,22 +189,22 @@ const card6nohover = () => {
 
 // Card Lessons Click
 const card1click = () => {
-	trigger1.fire(); // fire trigger
+	lessonTrigger[0].fire(); // fire trigger
 };
 const card2click = () => {
-	trigger2.fire(); // fire trigger
+	lessonTrigger[1].fire(); // fire trigger
 };
 const card3click = () => {
-	trigger3.fire(); // fire trigger
+	lessonTrigger[2].fire(); // fire trigger
 };
 const card4click = () => {
-	trigger4.fire(); // fire trigger
+	lessonTrigger[3].fire(); // fire trigger
 };
 const card5click = () => {
-	trigger5.fire(); // fire trigger
+	lessonTrigger[4].fire(); // fire trigger
 };
 const card6click = () => {
-	trigger6.fire(); // fire trigger
+	lessonTrigger[5].fire(); // fire trigger
 };
 
 const lessonCounter = () => {

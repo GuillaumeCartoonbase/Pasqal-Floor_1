@@ -85,7 +85,7 @@ Rive Input names:
 To fire the marble movement :
 
 ```js
-trigger1.fire(); // movement to lesson 1
+lessonTrigger[0].fire(); // movement to lesson 1
 ```
 
 Trigger movement from web
@@ -96,7 +96,7 @@ Trigger movement from web
 
 ```js
 const card1click = () => {
-	trigger1.fire(); // fire trigger
+	lessonTrigger[0].fire(); // fire trigger lesson 1
 };
 ```
 
