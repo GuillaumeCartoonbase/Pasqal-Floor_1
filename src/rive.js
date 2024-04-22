@@ -150,61 +150,18 @@ lessonCheckboxes[5].addEventListener("change", (e) => {
 });
 
 // Cards Lessons Hover Status
-const card1hover = () => {
-	isLessonHover[0].value = true;
+
+const cardHover = (index) => {
+	isLessonHover[index - 1].value = true;
 };
-const card1nohover = () => {
-	isLessonHover[0].value = false;
-};
-const card2hover = () => {
-	isLessonHover[1].value = true;
-};
-const card2nohover = () => {
-	isLessonHover[1].value = false;
-};
-const card3hover = () => {
-	isLessonHover[2].value = true;
-};
-const card3nohover = () => {
-	isLessonHover[2].value = false;
-};
-const card4hover = () => {
-	isLessonHover[3].value = true;
-};
-const card4nohover = () => {
-	isLessonHover[3].value = false;
-};
-const card5hover = () => {
-	isLessonHover[4].value = true;
-};
-const card5nohover = () => {
-	isLessonHover[4].value = false;
-};
-const card6hover = () => {
-	isLessonHover[5].value = true;
-};
-const card6nohover = () => {
-	isLessonHover[5].value = false;
+const cardNoHover = (index) => {
+	isLessonHover[index - 1].value = false;
 };
 
 // Card Lessons Click
-const card1click = () => {
-	lessonTrigger[0].fire(); // fire trigger
-};
-const card2click = () => {
-	lessonTrigger[1].fire(); // fire trigger
-};
-const card3click = () => {
-	lessonTrigger[2].fire(); // fire trigger
-};
-const card4click = () => {
-	lessonTrigger[3].fire(); // fire trigger
-};
-const card5click = () => {
-	lessonTrigger[4].fire(); // fire trigger
-};
-const card6click = () => {
-	lessonTrigger[5].fire(); // fire trigger
+
+const cardClick = (index) => {
+	lessonTrigger[index - 1].fire(); // fire trigger
 };
 
 const lessonCounter = () => {

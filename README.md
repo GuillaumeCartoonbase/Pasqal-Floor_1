@@ -115,7 +115,7 @@ Rive Input names:
 - `Lesson 6 Hover`
 
 ```html
-<div onmouseenter="card1hover()" onmouseleave="card1nohover()"></div>
+<div onmouseenter="cardHover(1)" onmouseleave="cardNoHover(1)"></div>
 ```
 
 ```js
@@ -125,11 +125,11 @@ for (let i = 1; i <= lessons; i++) {
 	);
 }
 
-const card1hover = () => {
-	isLessonHover[0].value = true;
+const cardHover = (index) => {
+	isLessonHover[index - 1].value = true;
 };
-const card1nohover = () => {
-	isLessonHover[0].value = false;
+const cardNoHover = (index) => {
+	isLessonHover[index - 1].value = false;
 };
 ```
 
