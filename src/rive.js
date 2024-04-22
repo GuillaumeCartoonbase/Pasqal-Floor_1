@@ -1,12 +1,12 @@
 // Change marble's color [0, 1 , 2, 3]
 let playerID = 0; // Var to change player in JS
-
-// Lessons status
-let areLessonsDone = [false, false, false, false, false, false]; // Initial value
+const lessons = 6;
 
 // Lesson progress, 0-100
 
 let progressLessons = [0, 0, 0, 0, 0, 0];
+
+const inputLessonDone = []; // Lessons status
 
 // Create Rive
 const riveInstance = new rive.Rive({
@@ -26,6 +26,12 @@ const riveInstance = new rive.Rive({
 		playerSelector = inputs.find((i) => i.name === "playerProfile");
 		playerSelector.value = playerID; //initial value
 
+		for (let i = 1; i <= lessons; i++) {
+			inputLessonDone.push(
+				inputs.find((input) => input.name === `isLesson${i}Done`)
+			);
+		}
+
 		// Change lesson done status
 		isLesson1Done = inputs.find((i) => i.name === "isLesson1Done");
 		isLesson2Done = inputs.find((i) => i.name === "isLesson2Done");
@@ -33,12 +39,6 @@ const riveInstance = new rive.Rive({
 		isLesson4Done = inputs.find((i) => i.name === "isLesson4Done");
 		isLesson5Done = inputs.find((i) => i.name === "isLesson5Done");
 		isLesson6Done = inputs.find((i) => i.name === "isLesson6Done");
-		isLesson1Done.value = areLessonsDone[0];
-		isLesson2Done.value = areLessonsDone[1];
-		isLesson3Done.value = areLessonsDone[2];
-		isLesson4Done.value = areLessonsDone[3];
-		isLesson5Done.value = areLessonsDone[4];
-		isLesson6Done.value = areLessonsDone[5];
 
 		// Lesson completion
 		lesson1Completion = inputs.find((i) => i.name === "Lesson progress 1");
@@ -146,27 +146,27 @@ for (let i = 1; i <= 6; i++) {
 
 // Switchers
 lessonCheckboxes[0].addEventListener("change", (e) => {
-	isLesson1Done.value = e.target.checked;
+	inputLessonDone[0].value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
 lessonCheckboxes[1].addEventListener("change", (e) => {
-	isLesson2Done.value = e.target.checked;
+	inputLessonDone[1].value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
 lessonCheckboxes[2].addEventListener("change", (e) => {
-	isLesson3Done.value = e.target.checked;
+	inputLessonDone[2].value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
 lessonCheckboxes[3].addEventListener("change", (e) => {
-	isLesson4Done.value = e.target.checked;
+	inputLessonDone[3].value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
 lessonCheckboxes[4].addEventListener("change", (e) => {
-	isLesson5Done.value = e.target.checked;
+	inputLessonDone[4].value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
 lessonCheckboxes[5].addEventListener("change", (e) => {
-	isLesson6Done.value = e.target.checked;
+	inputLessonDone[5].value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
 
@@ -231,16 +231,9 @@ const card6click = () => {
 const lessonCounter = () => {
 	let total = 0;
 
-	// for (let i = 0; i < areLessonsDone.length; i++) {
-	// 	total += areLessonsDone[i] == true ? 1 : 0;
-	// }
-
-	total += isLesson1Done.value ? 1 : 0;
-	total += isLesson2Done.value ? 1 : 0;
-	total += isLesson3Done.value ? 1 : 0;
-	total += isLesson4Done.value ? 1 : 0;
-	total += isLesson5Done.value ? 1 : 0;
-	total += isLesson6Done.value ? 1 : 0;
+	for (let i = 0; i < lessons; i++) {
+		total += inputLessonDone[i].value == true ? 1 : 0;
+	}
 
 	return total;
 };
