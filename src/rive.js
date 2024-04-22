@@ -4,6 +4,7 @@ const lessons = 6;
 
 const inputLessonDone = []; // Lessons status
 const lessonProgress = [];
+const isLessonHover = [];
 
 // Create Rive
 const riveInstance = new rive.Rive({
@@ -35,15 +36,12 @@ const riveInstance = new rive.Rive({
 			lessonProgress.push(
 				inputs.find((input) => input.name === `Lesson progress ${i}`)
 			);
-		}
 
-		// HOVER
-		isLesson1Hover = inputs.find((i) => i.name === "Lesson 1 Hover");
-		isLesson2Hover = inputs.find((i) => i.name === "Lesson 2 Hover");
-		isLesson3Hover = inputs.find((i) => i.name === "Lesson 3 Hover");
-		isLesson4Hover = inputs.find((i) => i.name === "Lesson 4 Hover");
-		isLesson5Hover = inputs.find((i) => i.name === "Lesson 5 Hover");
-		isLesson6Hover = inputs.find((i) => i.name === "Lesson 6 Hover");
+			// Hover
+			isLessonHover.push(
+				inputs.find((input) => input.name === `Lesson ${i} Hover`)
+			);
+		}
 
 		// Triggers
 		trigger1 = inputs.find((i) => i.name === "Trigger Lesson 1");
@@ -155,40 +153,40 @@ lessonCheckboxes[5].addEventListener("change", (e) => {
 
 // Cards Lessons Hover Status
 const card1hover = () => {
-	isLesson1Hover.value = true;
+	isLessonHover[0].value = true;
 };
 const card1nohover = () => {
-	isLesson1Hover.value = false;
+	isLessonHover[0].value = false;
 };
 const card2hover = () => {
-	isLesson2Hover.value = true;
+	isLessonHover[1].value = true;
 };
 const card2nohover = () => {
-	isLesson2Hover.value = false;
+	isLessonHover[1].value = false;
 };
 const card3hover = () => {
-	isLesson3Hover.value = true;
+	isLessonHover[2].value = true;
 };
 const card3nohover = () => {
-	isLesson3Hover.value = false;
+	isLessonHover[2].value = false;
 };
 const card4hover = () => {
-	isLesson4Hover.value = true;
+	isLessonHover[3].value = true;
 };
 const card4nohover = () => {
-	isLesson4Hover.value = false;
+	isLessonHover[3].value = false;
 };
 const card5hover = () => {
-	isLesson5Hover.value = true;
+	isLessonHover[4].value = true;
 };
 const card5nohover = () => {
-	isLesson5Hover.value = false;
+	isLessonHover[4].value = false;
 };
 const card6hover = () => {
-	isLesson6Hover.value = true;
+	isLessonHover[5].value = true;
 };
 const card6nohover = () => {
-	isLesson6Hover.value = false;
+	isLessonHover[5].value = false;
 };
 
 // Card Lessons Click

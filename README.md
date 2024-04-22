@@ -115,17 +115,21 @@ Rive Input names:
 - `Lesson 6 Hover`
 
 ```html
-<div onmouseover="card1hover()" onmouseleave="card1nohover()"></div>
+<div onmouseenter="card1hover()" onmouseleave="card1nohover()"></div>
 ```
 
 ```js
-isLesson1Hover = inputs.find((i) => i.name === "Lesson 1 Hover");
+for (let i = 1; i <= lessons; i++) {
+	isLessonHover.push(
+		inputs.find((input) => input.name === `Lesson ${i} Hover`)
+	);
+}
 
 const card1hover = () => {
-	isLesson1Hover.value = true;
+	isLessonHover[0].value = true;
 };
 const card1nohover = () => {
-	isLesson1Hover.value = false;
+	isLessonHover[0].value = false;
 };
 ```
 
