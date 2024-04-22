@@ -86,19 +86,6 @@ window.addEventListener(
 	false
 );
 
-// Get Events
-const demoEvent = document.getElementById("demoEvent");
-const onRiveEventReceived = (riveEvent) => {
-	const eventData = riveEvent.data;
-	let text =
-		Object.keys(eventData.properties)[0] === "lesson"
-			? `launch activity #${eventData.properties.lesson} `
-			: `${Object.keys(eventData.properties)[0]} ${
-					Object.values(eventData.properties)[0]
-			  }`;
-	demoEvent.innerHTML = text;
-};
-
 riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 
 // fire movement on click
@@ -115,6 +102,19 @@ const eventFire = (riveEvent) => {
 };
 
 riveInstance.on(rive.EventType.RiveEvent, eventFire);
+
+// Get Events
+const demoEvent = document.getElementById("demoEvent");
+const onRiveEventReceived = (riveEvent) => {
+	const eventData = riveEvent.data;
+	let text =
+		Object.keys(eventData.properties)[0] === "lesson"
+			? `launch activity #${eventData.properties.lesson} `
+			: `${Object.keys(eventData.properties)[0]} ${
+					Object.values(eventData.properties)[0]
+			  }`;
+	demoEvent.innerHTML = text;
+};
 
 // Event intel watcher
 const eventLog = document.getElementById("eventsInfo");
