@@ -137,35 +137,35 @@ const selectPlayer = (n) => {
 };
 
 // Get Checkboxes
-const checkLesson1 = document.getElementById("Lesson01");
-const checkLesson2 = document.getElementById("Lesson02");
-const checkLesson3 = document.getElementById("Lesson03");
-const checkLesson4 = document.getElementById("Lesson04");
-const checkLesson5 = document.getElementById("Lesson05");
-const checkLesson6 = document.getElementById("Lesson06");
+const lessonCheckboxes = [];
+
+for (let i = 1; i <= 6; i++) {
+	const checkbox = document.getElementById(`Lesson0${i}`);
+	lessonCheckboxes.push(checkbox);
+}
 
 // Switchers
-checkLesson1.addEventListener("change", (e) => {
+lessonCheckboxes[0].addEventListener("change", (e) => {
 	isLesson1Done.value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
-checkLesson2.addEventListener("change", (e) => {
+lessonCheckboxes[1].addEventListener("change", (e) => {
 	isLesson2Done.value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
-checkLesson3.addEventListener("change", (e) => {
+lessonCheckboxes[2].addEventListener("change", (e) => {
 	isLesson3Done.value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
-checkLesson4.addEventListener("change", (e) => {
+lessonCheckboxes[3].addEventListener("change", (e) => {
 	isLesson4Done.value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
-checkLesson5.addEventListener("change", (e) => {
+lessonCheckboxes[4].addEventListener("change", (e) => {
 	isLesson5Done.value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
-checkLesson6.addEventListener("change", (e) => {
+lessonCheckboxes[5].addEventListener("change", (e) => {
 	isLesson6Done.value = e.target.checked;
 	inputLessonCounter.value = lessonCounter();
 });
