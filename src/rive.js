@@ -86,8 +86,6 @@ window.addEventListener(
 	false
 );
 
-riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
-
 // fire movement on click
 const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
@@ -115,6 +113,7 @@ const onRiveEventReceived = (riveEvent) => {
 			  }`;
 	demoEvent.innerHTML = text;
 };
+riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 
 // Event intel watcher
 const eventLog = document.getElementById("eventsInfo");
