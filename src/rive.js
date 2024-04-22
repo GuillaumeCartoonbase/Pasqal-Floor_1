@@ -124,29 +124,11 @@ for (let i = 1; i <= 6; i++) {
 }
 
 // Switchers
-lessonCheckboxes[0].addEventListener("change", (e) => {
-	inputLessonDone[0].value = e.target.checked;
-	inputLessonCounter.value = lessonCounter();
-});
-lessonCheckboxes[1].addEventListener("change", (e) => {
-	inputLessonDone[1].value = e.target.checked;
-	inputLessonCounter.value = lessonCounter();
-});
-lessonCheckboxes[2].addEventListener("change", (e) => {
-	inputLessonDone[2].value = e.target.checked;
-	inputLessonCounter.value = lessonCounter();
-});
-lessonCheckboxes[3].addEventListener("change", (e) => {
-	inputLessonDone[3].value = e.target.checked;
-	inputLessonCounter.value = lessonCounter();
-});
-lessonCheckboxes[4].addEventListener("change", (e) => {
-	inputLessonDone[4].value = e.target.checked;
-	inputLessonCounter.value = lessonCounter();
-});
-lessonCheckboxes[5].addEventListener("change", (e) => {
-	inputLessonDone[5].value = e.target.checked;
-	inputLessonCounter.value = lessonCounter();
+lessonCheckboxes.forEach((checkbox, index) => {
+	checkbox.addEventListener("change", (e) => {
+		inputLessonDone[index].value = e.target.checked;
+		inputLessonCounter.value = lessonCounter();
+	});
 });
 
 // Cards Lessons Hover Status
