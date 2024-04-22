@@ -50,9 +50,9 @@ const riveInstance = new rive.Rive({
 		}
 
 		triggerNextLevel = inputs.find((i) => i.name === "Trigger Next Level");
-		triggerCardStart = inputs.find((i) => i.name === "card button trigger");
 
 		inputLessonCounter = inputs.find((i) => i.name === "lessonCounter");
+		inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
 	},
 });
 
