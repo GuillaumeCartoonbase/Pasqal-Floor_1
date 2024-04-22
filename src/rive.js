@@ -7,6 +7,7 @@ const lessons = 6;
 let progressLessons = [0, 0, 0, 0, 0, 0];
 
 const inputLessonDone = []; // Lessons status
+const lessonProgress = [];
 
 // Create Rive
 const riveInstance = new rive.Rive({
@@ -31,21 +32,12 @@ const riveInstance = new rive.Rive({
 			inputLessonDone.push(
 				inputs.find((input) => input.name === `isLesson${i}Done`)
 			);
-		}
 
-		// Lesson completion
-		lesson1Completion = inputs.find((i) => i.name === "Lesson progress 1");
-		lesson2Completion = inputs.find((i) => i.name === "Lesson progress 2");
-		lesson3Completion = inputs.find((i) => i.name === "Lesson progress 3");
-		lesson4Completion = inputs.find((i) => i.name === "Lesson progress 4");
-		lesson5Completion = inputs.find((i) => i.name === "Lesson progress 5");
-		lesson6Completion = inputs.find((i) => i.name === "Lesson progress 6");
-		lesson6Completion.value = progressLessons[0];
-		lesson1Completion.value = progressLessons[1];
-		lesson2Completion.value = progressLessons[2];
-		lesson3Completion.value = progressLessons[3];
-		lesson4Completion.value = progressLessons[4];
-		lesson5Completion.value = progressLessons[5];
+			// Get lesson progress
+			lessonProgress.push(
+				inputs.find((input) => input.name === `Lesson progress ${i}`)
+			);
+		}
 
 		// HOVER
 		isLesson1Hover = inputs.find((i) => i.name === "Lesson 1 Hover");
