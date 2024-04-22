@@ -69,6 +69,7 @@ const riveInstance = new rive.Rive({
 		trigger4 = inputs.find((i) => i.name === "Trigger Lesson 4");
 		trigger5 = inputs.find((i) => i.name === "Trigger Lesson 5");
 		trigger6 = inputs.find((i) => i.name === "Trigger Lesson 6");
+		triggerNextLevel = inputs.find((i) => i.name === "Trigger Next Level");
 
 		triggerCardStart = inputs.find((i) => i.name === "card button trigger");
 
@@ -103,12 +104,13 @@ riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 // fire movement on click
 const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
-	if (eventData.properties.lesson === 1) return trigger1.fire();
-	if (eventData.properties.lesson === 2) return trigger2.fire();
-	if (eventData.properties.lesson === 3) return trigger3.fire();
-	if (eventData.properties.lesson === 4) return trigger4.fire();
-	if (eventData.properties.lesson === 5) return trigger5.fire();
-	if (eventData.properties.lesson === 6) return trigger6.fire();
+	if (eventData.properties.cardButton === 1) return trigger1.fire();
+	if (eventData.properties.cardButton === 2) return trigger2.fire();
+	if (eventData.properties.cardButton === 3) return trigger3.fire();
+	if (eventData.properties.cardButton === 4) return trigger4.fire();
+	if (eventData.properties.cardButton === 5) return trigger5.fire();
+	if (eventData.properties.cardButton === 6) return trigger6.fire();
+	if (eventData.properties.cardButton === 200) return triggerNextLevel.fire();
 };
 
 riveInstance.on(rive.EventType.RiveEvent, eventFire);
