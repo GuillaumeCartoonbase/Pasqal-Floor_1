@@ -68,44 +68,28 @@ window.addEventListener(
 // fire movement on click
 const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
-	let cardButton = eventData.properties.cardButton;
-	if (cardButton === 1) return lessonTrigger[0].fire();
-	if (cardButton === 2) return lessonTrigger[1].fire();
-	if (cardButton === 3) return lessonTrigger[2].fire();
-	if (cardButton === 4) return lessonTrigger[3].fire();
-	if (cardButton === 5) return lessonTrigger[4].fire();
-	if (cardButton === 6) return lessonTrigger[5].fire();
-	if (cardButton === 200) return triggerNextLevel.fire();
+	title = "cardbutton";
+	if (eventData.name.split(" ")[0] === title) {
+		let cardButton = eventData.properties.cardButton;
+		if (cardButton === 1) return lessonTrigger[0].fire();
+		if (cardButton === 2) return lessonTrigger[1].fire();
+		if (cardButton === 3) return lessonTrigger[2].fire();
+		if (cardButton === 4) return lessonTrigger[3].fire();
+		if (cardButton === 5) return lessonTrigger[4].fire();
+		if (cardButton === 6) return lessonTrigger[5].fire();
+		if (cardButton === 200) return triggerNextLevel.fire();
+	} else {
+	}
 };
 
 riveInstance.on(rive.EventType.RiveEvent, eventFire);
-
-// Get Events
-const demoEvent = document.getElementById("demoEvent");
-const onRiveEventReceived = (riveEvent) => {
-	const eventData = riveEvent.data;
-	let text =
-		Object.keys(eventData.properties)[0] === "lesson"
-			? `launch activity #${eventData.properties.lesson} `
-			: `${Object.keys(eventData.properties)[0]} ${
-					Object.values(eventData.properties)[0]
-			  }`;
-	demoEvent.innerHTML = text;
-};
-riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
 
 // Event intel watcher
 const eventLog = document.getElementById("eventsInfo");
 const eventConsoleLogger = (riveEvent) => {
 	const eventData = riveEvent.data;
 	console.log("event name:", eventData.name);
-	console.log("event properties", eventData.properties);
-	eventLog.innerHTML = `event name: ${eventData.name}
-    <br>
-    event object keys: ${Object.keys(eventData.properties)}
-    <br>
-    event object values: ${Object.values(eventData.properties)}
-    `;
+	console.log("event properties:", eventData.properties);
 };
 
 riveInstance.on(rive.EventType.RiveEvent, eventConsoleLogger);
@@ -155,3 +139,14 @@ const lessonCounter = () => {
 
 	return total;
 };
+
+const mouse = (riveEvent) => {
+	const eventData = riveEvent.data;
+	let eventName = eventData.name;
+	if (eventName === "OnHoverEnter")
+		return (document.body.style.cursor = "pointer");
+	if (eventName === "OnHoverExit") return (document.body.style.cursor = "auto");
+	if (eventName === "OnClick") return (document.body.style.cursor = "auto");
+};
+
+riveInstance.on(rive.EventType.RiveEvent, mouse);
