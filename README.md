@@ -24,29 +24,24 @@ Rive Input names:
 
 #### Setup in JS
 
-The value is in an array named `isLessonsDone`.
+The value is in an array named `inputLessonDone`.
 
 ```js
-let areLessonsDone = [false, false, false, false, false, false]; // Initial value
+for (let i = 1; i <= lessons; i++) {
+	// Get lesson done status
+	inputLessonDone.push(
+		inputs.find((input) => input.name === `isLesson${i}Done`)
+	);
+}
 
-isLesson1Done = inputs.find((i) => i.name === "isLesson1Done"); // get rive input
-isLesson2Done = inputs.find((i) => i.name === "isLesson2Done"); // get rive input
-isLesson3Done = inputs.find((i) => i.name === "isLesson3Done"); // get rive input
-isLesson4Done = inputs.find((i) => i.name === "isLesson4Done"); // get rive input
-isLesson5Done = inputs.find((i) => i.name === "isLesson5Done"); // get rive input
-isLesson6Done = inputs.find((i) => i.name === "isLesson6Done"); // get rive input
-isLesson1Done.value = areLessonsDone[0];
-isLesson2Done.value = areLessonsDone[1];
-isLesson3Done.value = areLessonsDone[2];
-isLesson4Done.value = areLessonsDone[3];
-isLesson5Done.value = areLessonsDone[4];
-isLesson6Done.value = areLessonsDone[5];
+inputLessonDone[0].value = true; // lesson 1 marked done
+inputLessonDone[5].value = false; // lesson 6 marked not done
 ```
 
 ### Lesson Completion
 
 To show the completition percentage on the hover card.
-(integrer, 0-100, in array)
+(integrer, 0-100)
 
 Rive Input names:
 
@@ -60,20 +55,15 @@ Rive Input names:
 #### Setup in JS
 
 ```js
-let progressLessons = [0, 0, 0, 0, 0, 0]; // 0-100 value
+for (let i = 1; i <= lessons; i++) {
+	// Get lesson progress
+	lessonProgress.push(
+		inputs.find((input) => input.name === `Lesson progress ${i}`)
+	);
+}
 
-lesson1Completion = inputs.find((i) => i.name === "Lesson progress 1"); // get rive input
-lesson2Completion = inputs.find((i) => i.name === "Lesson progress 2"); // get rive input
-lesson3Completion = inputs.find((i) => i.name === "Lesson progress 3"); // get rive input
-lesson4Completion = inputs.find((i) => i.name === "Lesson progress 4"); // get rive input
-lesson5Completion = inputs.find((i) => i.name === "Lesson progress 5"); // get rive input
-lesson6Completion = inputs.find((i) => i.name === "Lesson progress 6"); // get rive input
-lesson6Completion.value = progressLessons[0];
-lesson1Completion.value = progressLessons[1];
-lesson2Completion.value = progressLessons[2];
-lesson3Completion.value = progressLessons[3];
-lesson4Completion.value = progressLessons[4];
-lesson5Completion.value = progressLessons[5];
+lessonProgress[0].value = 25; // lesson 1 at 25%
+lessonProgress[5].value = 100; // lesson 6 at 100%
 ```
 
 ### Triggers
@@ -95,7 +85,7 @@ Rive Input names:
 To fire the marble movement :
 
 ```js
-trigger1.fire(); // movement to lesson 1
+lessonTrigger[0].fire(); // movement to lesson 1
 ```
 
 Trigger movement from web
@@ -106,7 +96,7 @@ Trigger movement from web
 
 ```js
 const card1click = () => {
-	trigger1.fire(); // fire trigger
+	lessonTrigger[0].fire(); // fire trigger lesson 1
 };
 ```
 
@@ -125,17 +115,21 @@ Rive Input names:
 - `Lesson 6 Hover`
 
 ```html
-<div onmouseover="card1hover()" onmouseleave="card1nohover()"></div>
+<div onmouseenter="cardHover(1)" onmouseleave="cardNoHover(1)"></div>
 ```
 
 ```js
-isLesson1Hover = inputs.find((i) => i.name === "Lesson 1 Hover");
+for (let i = 1; i <= lessons; i++) {
+	isLessonHover.push(
+		inputs.find((input) => input.name === `Lesson ${i} Hover`)
+	);
+}
 
-const card1hover = () => {
-	isLesson1Hover.value = true;
+const cardHover = (index) => {
+	isLessonHover[index - 1].value = true;
 };
-const card1nohover = () => {
-	isLesson1Hover.value = false;
+const cardNoHover = (index) => {
+	isLessonHover[index - 1].value = false;
 };
 ```
 
