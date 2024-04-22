@@ -208,7 +208,7 @@ const pointerEvent = (riveEvent) => {
 	if (eventName === "OnHoverEnter")
 		return (document.body.style.cursor = "pointer");
 	if (eventName === "OnHoverExit") return (document.body.style.cursor = "auto");
-	if (eventName === "OnClick") return (document.body.style.cursor = "auto");
+	if (eventName === "OnClick") return console.log("clicked");
 };
 
 riveInstance.on(rive.EventType.RiveEvent, pointerEvent);
