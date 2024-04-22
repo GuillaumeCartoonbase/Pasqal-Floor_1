@@ -2,10 +2,6 @@
 let playerID = 0; // Var to change player in JS
 const lessons = 6;
 
-// Lesson progress, 0-100
-
-let progressLessons = [0, 0, 0, 0, 0, 0];
-
 const inputLessonDone = []; // Lessons status
 const lessonProgress = [];
 
@@ -29,11 +25,13 @@ const riveInstance = new rive.Rive({
 
 		for (let i = 1; i <= lessons; i++) {
 			// Get lesson done status
+			// inputLessonDone[0].value = true; [true, false]
 			inputLessonDone.push(
 				inputs.find((input) => input.name === `isLesson${i}Done`)
 			);
 
 			// Get lesson progress
+			// lessonProgress[0].value = 20; [0-100]
 			lessonProgress.push(
 				inputs.find((input) => input.name === `Lesson progress ${i}`)
 			);
