@@ -84,6 +84,7 @@ const eventFire = (riveEvent) => {
 		"event properties:",
 		eventProperties
 	);
+
 	switch (eventName) {
 		// Fire marble movements from card's buttons
 		case "cardbutton":
@@ -112,6 +113,9 @@ const eventFire = (riveEvent) => {
 			break;
 		case "marbleLevitateOFF":
 			inputMarbleHover.value = false;
+			break;
+		default:
+			console.log("Unhandled event:", eventName, "\n", riveEvent);
 			break;
 	}
 };
