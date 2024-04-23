@@ -24,18 +24,18 @@ Rive Input names:
 
 #### Setup in JS
 
-The value is in an array named `inputLessonDone`.
+The value is in an array named `inputLessonsDone`.
 
 ```js
 for (let i = 1; i <= lessons; i++) {
 	// Get lesson done status
-	inputLessonDone.push(
+	inputLessonsDone.push(
 		inputs.find((input) => input.name === `isLesson${i}Done`)
 	);
 }
 
-inputLessonDone[0].value = true; // lesson 1 marked done
-inputLessonDone[5].value = false; // lesson 6 marked not done
+inputLessonsDone[0].value = true; // lesson 1 marked done
+inputLessonsDone[5].value = false; // lesson 6 marked not done
 ```
 
 ### Lesson Completion
@@ -57,13 +57,13 @@ Rive Input names:
 ```js
 for (let i = 1; i <= lessons; i++) {
 	// Get lesson progress
-	lessonProgress.push(
+	inputLessonsProgress.push(
 		inputs.find((input) => input.name === `Lesson progress ${i}`)
 	);
 }
 
-lessonProgress[0].value = 25; // lesson 1 at 25%
-lessonProgress[5].value = 100; // lesson 6 at 100%
+inputLessonsProgress[0].value = 25; // lesson 1 at 25%
+inputLessonsProgress[5].value = 100; // lesson 6 at 100%
 ```
 
 ### Triggers
@@ -85,7 +85,7 @@ Rive Input names:
 To fire the marble movement :
 
 ```js
-lessonTrigger[0].fire(); // movement to lesson 1
+inputLessonsTrigger[0].fire(); // movement to lesson 1
 ```
 
 Trigger movement from web
@@ -96,7 +96,7 @@ Trigger movement from web
 
 ```js
 const card1click = () => {
-	lessonTrigger[0].fire(); // fire trigger lesson 1
+	inputLessonsTrigger[0].fire(); // fire trigger lesson 1
 };
 ```
 
@@ -120,16 +120,16 @@ Rive Input names:
 
 ```js
 for (let i = 1; i <= lessons; i++) {
-	isLessonHover.push(
+	inputIsLessonsHover.push(
 		inputs.find((input) => input.name === `Lesson ${i} Hover`)
 	);
 }
 
 const cardHover = (index) => {
-	isLessonHover[index - 1].value = true;
+	inputIsLessonsHover[index - 1].value = true;
 };
 const cardNoHover = (index) => {
-	isLessonHover[index - 1].value = false;
+	inputIsLessonsHover[index - 1].value = false;
 };
 ```
 
@@ -161,15 +161,20 @@ Events return an object
 
 `console.log()` are in place to show the result and timing.
 
-```js
-console.log(eventData.name);
-console.log(eventData.properties);
-```
+#### Lesson events
 
 ```js
-LessonButton = { lesson: 1 };
+LessonEvent1 = { lesson: 1 };
+LessonEvent2 = { lesson: 2 };
+(...)
 NextLevelButton = { level: 2 };
 ```
+
+#### Cursor events
+
+- `OnHoverEnter`
+- `OnHoverExit`
+- `OnClick`
 
 #### Setup in JS
 
@@ -177,39 +182,35 @@ Current example:
 
 ```js
 // Get Events
-const demoEvent = document.getElementById("demoEvent");
-
-const onRiveEventReceived = (riveEvent) => {
+const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
-	let text =
-		Object.keys(eventData.properties)[0] === "lesson"
-			? `launch activity #${eventData.properties.lesson} `
-			: `${Object.keys(eventData.properties)[0]} ${
-					Object.values(eventData.properties)[0]
-			  }`;
-	demoEvent.innerHTML = text;
-};
+	const eventName = eventData.name;
+	const eventProperties = eventData.properties;
 
-riveInstance.on(rive.EventType.RiveEvent, onRiveEventReceived);
-```
+	// Event logger
+	console.log("event name:", eventName);
+	console.log("event properties:", eventProperties);
 
-#### Cursor events
+	// Fire marble movements from card's buttons
+	if (eventName.split(" ")[0] === "cardbutton") {
+		let cardButton = eventProperties.cardButton;
+		for (let i = 0; i < lessons; i++) {
+			if (cardButton === i + 1) return inputLessonsTrigger[i].fire();
+		}
+		if (cardButton === 200) return triggerNextLevel.fire();
+	}
 
-3 events are presents :
-
-- `OnHoverEnter`
-- `OnHoverExit`
-- `OnClick`
-
-```js
-const pointerEvent = (riveEvent) => {
-	const eventData = riveEvent.data;
-	let eventName = eventData.name;
+	// Change pointer when hovering action
 	if (eventName === "OnHoverEnter")
 		return (document.body.style.cursor = "pointer");
 	if (eventName === "OnHoverExit") return (document.body.style.cursor = "auto");
 	if (eventName === "OnClick") return console.log("clicked");
+
+	// Levitate marble when on a lesson, not in movement
+	if (eventName === "marbleLevitateON") return (inputMarbleHover.value = true);
+	if (eventName === "marbleLevitateOFF")
+		return (inputMarbleHover.value = false);
 };
 
-riveInstance.on(rive.EventType.RiveEvent, pointerEvent);
+riveInstance.on(rive.EventType.RiveEvent, eventFire);
 ```

@@ -1,11 +1,12 @@
+const lessons = 6; // Number of lessons
+
 // Change marble's color [0, 1 , 2, 3]
 let playerID = 0; // Var to change player
-const lessons = 6;
 
-const inputLessonDone = []; // Lessons status
-const lessonProgress = []; // Lessons progress
-const isLessonHover = []; // Lesson pointer hover
-const lessonTrigger = []; // Lesson trigger movement
+const inputLessonsDone = []; // Lessons status
+const inputLessonsProgress = []; // Lessons progress
+const inputIsLessonsHover = []; // Lesson pointer hover
+const inputLessonsTrigger = []; // Lesson trigger movement
 
 // Create Rive
 const riveInstance = new rive.Rive({
@@ -27,26 +28,26 @@ const riveInstance = new rive.Rive({
 
 		for (let i = 1; i <= lessons; i++) {
 			// Get lesson done status
-			// inputLessonDone[0].value = true; (true, false)
-			inputLessonDone.push(
+			// inputLessonsDone[0].value = true; (true, false)
+			inputLessonsDone.push(
 				inputs.find((input) => input.name === `isLesson${i}Done`)
 			);
 
 			// Get lesson progress
-			// lessonProgress[0].value = 20; (0-100)
-			lessonProgress.push(
+			// inputLessonsProgress[0].value = 20; (0-100)
+			inputLessonsProgress.push(
 				inputs.find((input) => input.name === `Lesson progress ${i}`)
 			);
 
 			// Hover effect
-			// isLessonHover[0].value = true (true, false)
-			isLessonHover.push(
+			// inputIsLessonsHover[0].value = true (true, false)
+			inputIsLessonsHover.push(
 				inputs.find((input) => input.name === `Lesson ${i} Hover`)
 			);
 
 			// Triggers marble animation
-			// lessonTrigger[0].fire()
-			lessonTrigger.push(
+			// inputLessonsTrigger[0].fire()
+			inputLessonsTrigger.push(
 				inputs.find((input) => input.name === `Trigger Lesson ${i}`)
 			);
 		}
@@ -54,7 +55,7 @@ const riveInstance = new rive.Rive({
 		triggerNextLevel = inputs.find((i) => i.name === "Trigger Next Level");
 
 		// Lesson counter
-		inputLessonCounter = inputs.find((i) => i.name === "lessonCounter");
+		inputLessonsCounter = inputs.find((i) => i.name === "lessonCounter");
 		inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
 	},
 });
@@ -68,6 +69,7 @@ window.addEventListener(
 	false
 );
 
+// Get Events
 const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
 	const eventName = eventData.name;
@@ -81,7 +83,7 @@ const eventFire = (riveEvent) => {
 	if (eventName.split(" ")[0] === "cardbutton") {
 		let cardButton = eventProperties.cardButton;
 		for (let i = 0; i < lessons; i++) {
-			if (cardButton === i + 1) return lessonTrigger[i].fire();
+			if (cardButton === i + 1) return inputLessonsTrigger[i].fire();
 		}
 		if (cardButton === 200) return triggerNextLevel.fire();
 	}
@@ -108,7 +110,7 @@ const selectPlayer = (n) => {
 // Get Checkboxes from HTML
 const lessonCheckboxes = [];
 
-for (let i = 1; i <= 6; i++) {
+for (let i = 1; i <= lessons; i++) {
 	const checkbox = document.getElementById(`Lesson0${i}`);
 	lessonCheckboxes.push(checkbox);
 }
@@ -116,28 +118,28 @@ for (let i = 1; i <= 6; i++) {
 // Switcher lesson done status from HTML
 lessonCheckboxes.forEach((checkbox, index) => {
 	checkbox.addEventListener("change", (e) => {
-		inputLessonDone[index].value = e.target.checked;
-		inputLessonCounter.value = lessonCounter();
+		inputLessonsDone[index].value = e.target.checked;
+		inputLessonsCounter.value = lessonCounter();
 	});
 });
 
 // Cards Lessons Hover Status from HTML
 const cardHover = (index) => {
-	isLessonHover[index - 1].value = true;
+	inputIsLessonsHover[index - 1].value = true;
 };
 const cardNoHover = (index) => {
-	isLessonHover[index - 1].value = false;
+	inputIsLessonsHover[index - 1].value = false;
 };
 
 // Card Lessons Click from HTML
 const cardClick = (index) => {
-	lessonTrigger[index - 1].fire(); // fire trigger
+	inputLessonsTrigger[index - 1].fire(); // fire trigger
 };
 
 const lessonCounter = () => {
 	let total = 0;
 	for (let i = 0; i < lessons; i++) {
-		total += inputLessonDone[i].value == true ? 1 : 0;
+		total += inputLessonsDone[i].value == true ? 1 : 0;
 	}
 	return total;
 };
