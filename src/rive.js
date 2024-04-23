@@ -76,8 +76,14 @@ const eventFire = (riveEvent) => {
 	const eventProperties = eventData.properties;
 
 	// Event logger
-	console.log("event name:", eventName);
-	console.log("event properties:", eventProperties);
+	console.log(
+		"",
+		"event name:",
+		eventName,
+		"\n",
+		"event properties:",
+		eventProperties
+	);
 
 	// Fire marble movements from card's buttons
 	if (eventName.split(" ")[0] === "cardbutton") {
