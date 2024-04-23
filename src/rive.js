@@ -84,26 +84,36 @@ const eventFire = (riveEvent) => {
 		"event properties:",
 		eventProperties
 	);
+	switch (eventName) {
+		// Fire marble movements from card's buttons
+		case "cardbutton":
+			//  eventName.split(" ")[0] ===
+			let cardButton = eventProperties.cardButton;
+			for (let i = 0; i < lessons; i++) {
+				if (cardButton === i + 1) return inputLessonsTrigger[i].fire();
+			}
+			if (cardButton === 200) return triggerNextLevel.fire();
+			break;
 
-	// Fire marble movements from card's buttons
-	if (eventName.split(" ")[0] === "cardbutton") {
-		let cardButton = eventProperties.cardButton;
-		for (let i = 0; i < lessons; i++) {
-			if (cardButton === i + 1) return inputLessonsTrigger[i].fire();
-		}
-		if (cardButton === 200) return triggerNextLevel.fire();
+		// Change pointer when hovering action
+		case "OnHoverEnter":
+			document.body.style.cursor = "pointer";
+			break;
+		case "OnHoverExit":
+			document.body.style.cursor = "auto";
+			break;
+		case "OnClick":
+			console.log("clicked");
+			break;
+
+		// Levitate marble when on a lesson, not in movement
+		case "marbleLevitateON":
+			inputMarbleHover.value = true;
+			break;
+		case "marbleLevitateOFF":
+			inputMarbleHover.value = false;
+			break;
 	}
-
-	// Change pointer when hovering action
-	if (eventName === "OnHoverEnter")
-		return (document.body.style.cursor = "pointer");
-	if (eventName === "OnHoverExit") return (document.body.style.cursor = "auto");
-	if (eventName === "OnClick") return console.log("clicked");
-
-	// Levitate marble when on a lesson, not in movement
-	if (eventName === "marbleLevitateON") return (inputMarbleHover.value = true);
-	if (eventName === "marbleLevitateOFF")
-		return (inputMarbleHover.value = false);
 };
 
 riveInstance.on(rive.EventType.RiveEvent, eventFire);
