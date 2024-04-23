@@ -71,22 +71,19 @@ window.addEventListener(
 const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
 	const eventName = eventData.name;
+	const eventProperties = eventData.properties;
 
 	// Event logger
-	console.log("event name:", eventData.name);
-	console.log("event properties:", eventData.properties);
+	console.log("event name:", eventName);
+	console.log("event properties:", eventProperties);
 
 	// Fire marble movements from card's buttons
-	if (eventData.name.split(" ")[0] === "cardbutton") {
-		let cardButton = eventData.properties.cardButton;
-		if (cardButton === 1) return lessonTrigger[0].fire();
-		if (cardButton === 2) return lessonTrigger[1].fire();
-		if (cardButton === 3) return lessonTrigger[2].fire();
-		if (cardButton === 4) return lessonTrigger[3].fire();
-		if (cardButton === 5) return lessonTrigger[4].fire();
-		if (cardButton === 6) return lessonTrigger[5].fire();
+	if (eventName.split(" ")[0] === "cardbutton") {
+		let cardButton = eventProperties.cardButton;
+		for (let i = 0; i < lessons; i++) {
+			if (cardButton === i + 1) return lessonTrigger[i].fire();
+		}
 		if (cardButton === 200) return triggerNextLevel.fire();
-	} else {
 	}
 
 	// Change pointer when hovering action
