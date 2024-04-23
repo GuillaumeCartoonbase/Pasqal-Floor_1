@@ -150,3 +150,12 @@ const pointerEvent = (riveEvent) => {
 };
 
 riveInstance.on(rive.EventType.RiveEvent, pointerEvent);
+
+const marbleLevitate = (riveEvent) => {
+	const eventData = riveEvent.data.name;
+	if (eventData === "marbleLevitateON") return (inputMarbleHover.value = true);
+	if (eventData === "marbleLevitateOFF")
+		return (inputMarbleHover.value = false);
+};
+
+riveInstance.on(rive.EventType.RiveEvent, marbleLevitate);
