@@ -3,6 +3,7 @@ const lessons = 6; // Number of lessons
 // Change marble's color [0, 1 , 2, 3]
 let playerID = 0; // Var to change player
 
+const inputLessonsStarted = []; // Lessons status
 const inputLessonsDone = []; // Lessons status
 const inputLessonsProgress = []; // Lessons progress
 const inputIsLessonsHover = []; // Lesson pointer hover
@@ -27,6 +28,12 @@ const riveInstance = new rive.Rive({
 		playerSelector.value = playerID;
 
 		for (let i = 1; i <= lessons; i++) {
+			// Get lesson started status
+			// inputLessonsStarted[0].value = true; (true, false)
+			inputLessonsStarted.push(
+				inputs.find((input) => input.name === `isLesson${i}Started`)
+			);
+
 			// Get lesson done status
 			// inputLessonsDone[0].value = true; (true, false)
 			inputLessonsDone.push(
