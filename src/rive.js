@@ -6,7 +6,6 @@ let playerID = 0; // Var to change player
 const inputLessonsStarted = []; // Lessons status
 const inputLessonsDone = []; // Lessons status
 const inputLessonsProgress = []; // Lessons progress
-const inputIsLessonsHover = []; // Lesson pointer hover
 const inputLessonsTrigger = []; // Lesson trigger movement
 
 const isLessonHover = []; // Lesson trigger movement
@@ -46,12 +45,6 @@ const riveInstance = new rive.Rive({
 			// inputLessonsProgress[0].value = 20; (0-100)
 			inputLessonsProgress.push(
 				inputs.find((input) => input.name === `Lesson progress ${i}`)
-			);
-
-			// Hover effect
-			// inputIsLessonsHover[0].value = true (true, false)
-			inputIsLessonsHover.push(
-				inputs.find((input) => input.name === `Lesson ${i} Hover`)
 			);
 
 			// Triggers marble animation
@@ -99,11 +92,11 @@ const eventFire = (riveEvent) => {
 
 	// Event logger
 	// console.log( "", "event name:", eventName, "\n", "event properties:", eventProperties);
+	console.log("event name:", eventName);
 
 	switch (eventKey) {
 		// Fire marble movements from card's buttons
 		case "cardbutton":
-			//  eventName.split(" ")[0] ===
 			let cardButton = eventProperties.cardButton;
 			for (let i = 0; i < lessons; i++) {
 				if (cardButton === i + 1) return inputLessonsTrigger[i].fire();
@@ -112,10 +105,18 @@ const eventFire = (riveEvent) => {
 			break;
 
 		case "On":
-			isLessonHover[eventName.slice(-1) - 1].value = true;
+			riveInstance.setBooleanStateAtPath(
+				"lessonHover",
+				true,
+				`Lesson ${eventName.slice(-1)}`
+			);
 			break;
 		case "Off":
-			isLessonHover[eventName.slice(-1) - 1].value = false;
+			riveInstance.setBooleanStateAtPath(
+				"lessonHover",
+				false,
+				`Lesson ${eventName.slice(-1)}`
+			);
 			break;
 
 		// Change pointer when hovering action
@@ -166,10 +167,10 @@ lessonCheckboxes.forEach((checkbox, index) => {
 
 // Cards Lessons Hover Status from HTML
 const cardHover = (index) => {
-	inputIsLessonsHover[index - 1].value = true;
+	isLessonHover[index - 1].value = true;
 };
 const cardNoHover = (index) => {
-	inputIsLessonsHover[index - 1].value = false;
+	isLessonHover[index - 1].value = false;
 };
 
 // Card Lessons Click from HTML
