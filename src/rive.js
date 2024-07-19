@@ -70,6 +70,9 @@ const riveInstance = new rive.Rive({
 
 		isResetting = inputs.find((i) => i.name === "isResetting");
 		isResetting.value = true;
+
+		isNextLevelActive = inputs.find((i) => i.name === "isNextLevelActive");
+		isNextLevelActive.value = false;
 	},
 });
 
