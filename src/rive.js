@@ -64,6 +64,12 @@ const riveInstance = new rive.Rive({
 		// Lesson counter
 		inputLessonsCounter = inputs.find((i) => i.name === "lessonCounter");
 		inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
+
+		responsivShrink = inputs.find((i) => i.name === "responsivShrink");
+		responsivShrink.value = 0;
+
+		isResetting = inputs.find((i) => i.name === "isResetting");
+		isResetting.value = true;
 	},
 });
 
