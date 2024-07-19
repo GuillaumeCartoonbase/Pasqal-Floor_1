@@ -9,6 +9,8 @@ const inputLessonsProgress = []; // Lessons progress
 const inputIsLessonsHover = []; // Lesson pointer hover
 const inputLessonsTrigger = []; // Lesson trigger movement
 
+const isLessonHover = []; // Lesson trigger movement
+
 // Create Rive
 const riveInstance = new rive.Rive({
 	src: "src/floor-1.riv", //get rive file
@@ -57,6 +59,11 @@ const riveInstance = new rive.Rive({
 			inputLessonsTrigger.push(
 				inputs.find((input) => input.name === `Trigger Lesson ${i}`)
 			);
+
+			// Change lesson hovering status
+			isLessonHover.push(
+				inputs.find((input) => input.name === `Lesson ${i} Hover`)
+			);
 		}
 		// Trigger marble to next level
 		triggerNextLevel = inputs.find((i) => i.name === "Trigger Next Level");
@@ -88,10 +95,12 @@ const eventFire = (riveEvent) => {
 	const eventName = eventData.name;
 	const eventProperties = eventData.properties;
 
+	const eventKey = eventName.split("-")[0];
+
 	// Event logger
 	// console.log( "", "event name:", eventName, "\n", "event properties:", eventProperties);
 
-	switch (eventName) {
+	switch (eventKey) {
 		// Fire marble movements from card's buttons
 		case "cardbutton":
 			//  eventName.split(" ")[0] ===
@@ -100,6 +109,13 @@ const eventFire = (riveEvent) => {
 				if (cardButton === i + 1) return inputLessonsTrigger[i].fire();
 			}
 			if (cardButton === 200) return triggerNextLevel.fire();
+			break;
+
+		case "On":
+			isLessonHover[eventName.slice(-1) - 1].value = true;
+			break;
+		case "Off":
+			isLessonHover[eventName.slice(-1) - 1].value = false;
 			break;
 
 		// Change pointer when hovering action
