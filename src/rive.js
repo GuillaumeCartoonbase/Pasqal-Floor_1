@@ -76,14 +76,7 @@ const eventFire = (riveEvent) => {
 	const eventProperties = eventData.properties;
 
 	// Event logger
-	console.log(
-		"",
-		"event name:",
-		eventName,
-		"\n",
-		"event properties:",
-		eventProperties
-	);
+	// console.log( "", "event name:", eventName, "\n", "event properties:", eventProperties);
 
 	switch (eventName) {
 		// Fire marble movements from card's buttons
@@ -104,7 +97,6 @@ const eventFire = (riveEvent) => {
 			document.body.style.cursor = "auto";
 			break;
 		case "OnClick":
-			console.log("clicked");
 			break;
 
 		// Levitate marble when on a lesson, not in movement
@@ -115,7 +107,7 @@ const eventFire = (riveEvent) => {
 			inputMarbleHover.value = false;
 			break;
 		default:
-			console.log("Unhandled event:", eventName, "\n", riveEvent);
+			console.log("Unhandled event:", eventName);
 			break;
 	}
 };
