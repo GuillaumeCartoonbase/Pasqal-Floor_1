@@ -160,5 +160,6 @@ const lessonCounter = () => {
 	for (let i = 0; i < lessons; i++) {
 		total += inputLessonsDone[i].value == true ? 1 : 0;
 	}
+	inputLessonsCounter.value = total;
 	return total;
 };
