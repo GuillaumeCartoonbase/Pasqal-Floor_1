@@ -1,3 +1,4 @@
+const stateMachine = "First Floor";
 const lessons = 6; // Number of lessons
 
 // Change marble's color [0, 1 , 2, 3]
@@ -15,7 +16,7 @@ const riveInstance = new rive.Rive({
 	src: "src/floor-1.riv", //get rive file
 	canvas: document.getElementById("firstFloor"), //get correct canvas
 	autoplay: true,
-	stateMachines: "First Floor", // get correct stateMachine
+	stateMachines: stateMachine, // get correct stateMachine
 	automaticallyHandleEvents: true, // Automatically handle RiveHTTPEvents
 	onLoad: () => {
 		// Prevent a blurry canvas by using the device pixel ratio
