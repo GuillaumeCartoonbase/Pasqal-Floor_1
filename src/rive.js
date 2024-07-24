@@ -8,7 +8,7 @@ const inputLessonsDone = []; // Lessons status
 const inputLessonsProgress = []; // Lessons progress
 const inputLessonsTrigger = []; // Lesson trigger movement
 
-const isLessonHover = []; // Lesson trigger movement
+const inputIsLessonHover = []; // Lesson trigger movement
 
 // Create Rive
 const riveInstance = new rive.Rive({
@@ -54,7 +54,7 @@ const riveInstance = new rive.Rive({
 			);
 
 			// Change lesson hovering status
-			isLessonHover.push(
+			inputIsLessonHover.push(
 				inputs.find((input) => input.name === `Lesson ${i} Hover`)
 			);
 		}
@@ -170,10 +170,10 @@ lessonCheckboxes.forEach((checkbox, index) => {
 
 // Cards Lessons Hover Status from HTML
 const cardHover = (index) => {
-	isLessonHover[index - 1].value = true;
+	riveInstance.setBooleanStateAtPath("lessonHover", true, `Lesson ${index}`);
 };
 const cardNoHover = (index) => {
-	isLessonHover[index - 1].value = false;
+	riveInstance.setBooleanStateAtPath("lessonHover", false, `Lesson ${index}`);
 };
 
 // Card Lessons Click from HTML

@@ -59,6 +59,59 @@ inputLessonsStarted[2].value = true; // lesson 2 marked done
 inputLessonsDone[5].value = false; // lesson 6 marked not done
 ```
 
+# Lessons Hover status
+
+To set the status of hovering on the lessons (boolean).
+
+## Rive Input names
+
+To change status:
+
+```js
+riveInstance.setBooleanStateAtPath(
+	"lessonHover", // input name
+	true, // status
+	`Lesson 1` // lesson picker
+);
+```
+
+Recorded status:
+
+- `Lesson 1 Hover`
+- `Lesson 2 Hover`
+- ...
+
+## Setup
+
+### To change status from web
+
+```html
+<div onmouseenter="cardHover(1)" onmouseleave="cardNoHover(1)"></div>
+```
+
+```js
+const cardHover = (index) => {
+	riveInstance.setBooleanStateAtPath("lessonHover", true, `Lesson ${index}`);
+};
+const cardNoHover = (index) => {
+	riveInstance.setBooleanStateAtPath("lessonHover", false, `Lesson ${index}`);
+};
+```
+
+### To check the status
+
+```js
+const inputIsLessonsHover = [];
+
+for (let i = 1; i <= lessons; i++) {
+	inputIsLessonsHover.push(
+		inputs.find((input) => input.name === `Lesson ${i} Hover`)
+	);
+}
+
+inputIsLessonsHover.value;
+```
+
 # Triggers
 
 To launch a lesson or next level.
@@ -90,39 +143,6 @@ Trigger movement from web
 ```js
 const card1click = () => {
 	inputLessonsTrigger[0].fire(); // fire trigger lesson 1
-};
-```
-
-# Hover
-
-To set the status hovering on the lessons
-(boolean)
-
-Rive Input names:
-
-- `Lesson 1 Hover`
-- `Lesson 2 Hover`
-- `Lesson 3 Hover`
-- `Lesson 4 Hover`
-- `Lesson 5 Hover`
-- `Lesson 6 Hover`
-
-```html
-<div onmouseenter="cardHover(1)" onmouseleave="cardNoHover(1)"></div>
-```
-
-```js
-for (let i = 1; i <= lessons; i++) {
-	inputIsLessonsHover.push(
-		inputs.find((input) => input.name === `Lesson ${i} Hover`)
-	);
-}
-
-const cardHover = (index) => {
-	inputIsLessonsHover[index - 1].value = true;
-};
-const cardNoHover = (index) => {
-	inputIsLessonsHover[index - 1].value = false;
 };
 ```
 
