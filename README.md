@@ -2,7 +2,7 @@
 
 # Rive Doc
 
-[runtime](https://help.rive.app/runtimes/overview)
+Refer to the [Rive runtime documentation](https://help.rive.app/runtimes/overview) for more information.
 
 # Responsiveness
 
