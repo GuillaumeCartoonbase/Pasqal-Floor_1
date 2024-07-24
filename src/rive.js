@@ -15,65 +15,67 @@ const riveInstance = new rive.Rive({
 	autoplay: true,
 	stateMachines: stateMachine, // get correct stateMachine
 	automaticallyHandleEvents: true, // Automatically handle RiveHTTPEvents
-	onLoad: () => {
-		// Prevent a blurry canvas by using the device pixel ratio
-		riveInstance.resizeDrawingSurfaceToCanvas();
-
-		// Get inputs
-		const inputs = riveInstance.stateMachineInputs("First Floor");
-
-		// Change marble's color [0, 1 , 2, 3]
-		let playerID = 0; // Var to change player
-		playerSelector = inputs.find((i) => i.name === "playerProfile");
-		playerSelector.value = playerID;
-
-		for (let i = 1; i <= lessons; i++) {
-			// Get lesson started status
-			// inputLessonsStarted[0].value = true; (true, false)
-			inputLessonsStarted.push(
-				inputs.find((input) => input.name === `isLesson${i}Started`)
-			);
-
-			// Get lesson done status
-			// inputLessonsDone[0].value = true; (true, false)
-			inputLessonsDone.push(
-				inputs.find((input) => input.name === `isLesson${i}Done`)
-			);
-
-			// Get lesson progress
-			// inputLessonsProgress[0].value = 20; (0-100)
-			inputLessonsProgress.push(
-				inputs.find((input) => input.name === `Lesson progress ${i}`)
-			);
-
-			// Triggers marble animation
-			// inputLessonsTrigger[0].fire()
-			inputLessonsTrigger.push(
-				inputs.find((input) => input.name === `Trigger Lesson ${i}`)
-			);
-
-			// Change lesson hovering status
-			inputIsLessonHover.push(
-				inputs.find((input) => input.name === `Lesson ${i} Hover`)
-			);
-		}
-		// Trigger marble to next level
-		triggerNextLevel = inputs.find((i) => i.name === "Trigger Next Level");
-
-		// Lesson counter
-		inputLessonsCounter = inputs.find((i) => i.name === "lessonCounter");
-		inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
-
-		responsiveShrink = inputs.find((i) => i.name === "responsiveShrink");
-		responsiveShrink.value = 0;
-
-		isResetting = inputs.find((i) => i.name === "isResetting");
-		isResetting.value = true;
-
-		isNextLevelActive = inputs.find((i) => i.name === "isNextLevelActive");
-		isNextLevelActive.value = true;
-	},
+	onLoad: onLoadHandler,
 });
+
+function onLoadHandler() {
+	// Prevent a blurry canvas by using the device pixel ratio
+	riveInstance.resizeDrawingSurfaceToCanvas();
+
+	// Get inputs
+	const inputs = riveInstance.stateMachineInputs("First Floor");
+
+	// Change marble's color [0, 1 , 2, 3]
+	let playerID = 0; // Var to change player
+	playerSelector = inputs.find((i) => i.name === "playerProfile");
+	playerSelector.value = playerID;
+
+	for (let i = 1; i <= lessons; i++) {
+		// Get lesson started status
+		// inputLessonsStarted[0].value = true; (true, false)
+		inputLessonsStarted.push(
+			inputs.find((input) => input.name === `isLesson${i}Started`)
+		);
+
+		// Get lesson done status
+		// inputLessonsDone[0].value = true; (true, false)
+		inputLessonsDone.push(
+			inputs.find((input) => input.name === `isLesson${i}Done`)
+		);
+
+		// Get lesson progress
+		// inputLessonsProgress[0].value = 20; (0-100)
+		inputLessonsProgress.push(
+			inputs.find((input) => input.name === `Lesson progress ${i}`)
+		);
+
+		// Triggers marble animation
+		// inputLessonsTrigger[0].fire()
+		inputLessonsTrigger.push(
+			inputs.find((input) => input.name === `Trigger Lesson ${i}`)
+		);
+
+		// Change lesson hovering status
+		inputIsLessonHover.push(
+			inputs.find((input) => input.name === `Lesson ${i} Hover`)
+		);
+	}
+	// Trigger marble to next level
+	triggerNextLevel = inputs.find((i) => i.name === "Trigger Next Level");
+
+	// Lesson counter
+	inputLessonsCounter = inputs.find((i) => i.name === "lessonCounter");
+	inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
+
+	responsiveShrink = inputs.find((i) => i.name === "responsiveShrink");
+	responsiveShrink.value = 0;
+
+	isResetting = inputs.find((i) => i.name === "isResetting");
+	isResetting.value = true;
+
+	isNextLevelActive = inputs.find((i) => i.name === "isNextLevelActive");
+	isNextLevelActive.value = true;
+}
 
 // Resize the drawing surface if the window resizes
 window.addEventListener(
