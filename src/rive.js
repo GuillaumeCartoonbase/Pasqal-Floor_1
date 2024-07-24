@@ -44,12 +44,6 @@ function onLoadHandler() {
 			inputs.find((input) => input.name === `isLesson${i}Done`)
 		);
 
-		// Get lesson progress
-		// inputLessonsProgress[0].value = 20; (0-100)
-		inputLessonsProgress.push(
-			inputs.find((input) => input.name === `Lesson progress ${i}`)
-		);
-
 		// Triggers marble animation
 		// inputLessonsTrigger[0].fire()
 		inputLessonsTrigger.push(
