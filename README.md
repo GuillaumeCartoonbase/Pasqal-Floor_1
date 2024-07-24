@@ -24,33 +24,38 @@ To switch between "next" level coming soon" and "go to next level".
 isNextLevelActive.value = false;
 ```
 
-# Lesson status
+# Lessons statuses
 
-To mark a lesson 'done'.
-(boolean, in array)
+To mark a lesson 'started' or 'done' (boolean, in array).
 
-Rive Input names:
+## Rive inputs
 
+- `isLesson1Started`
 - `isLesson1Done`
+- `isLesson2Started`
 - `isLesson2Done`
-- `isLesson3Done`
-- `isLesson4Done`
-- `isLesson5Done`
-- `isLesson6Done`
+- ...
 
 ## Setup in JS
 
-The value is in an array named `inputLessonsDone`.
+The values are in arrays named:
+
+- `inputLessonsStarted`
+- `inputLessonsDone`
 
 ```js
+const lessons = 6;
+const inputLessonsStarted = [];
+const inputLessonsDone = [];
+
 for (let i = 1; i <= lessons; i++) {
-	// Get lesson done status
 	inputLessonsDone.push(
 		inputs.find((input) => input.name === `isLesson${i}Done`)
 	);
 }
 
-inputLessonsDone[0].value = true; // lesson 1 marked done
+inputLessonsStarted[0].value = true; // lesson 1 marked started
+inputLessonsStarted[2].value = true; // lesson 2 marked done
 inputLessonsDone[5].value = false; // lesson 6 marked not done
 ```
 
