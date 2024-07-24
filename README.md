@@ -163,7 +163,7 @@ To change the marble's color depending on the user profile.
 - `2` : Red marble
 - `3` : Green marble
 
-Variable to edit in js: `playerID`
+Variable to edit in JS: `playerID`
 
 Rive Input name: `playerProfile`
 
