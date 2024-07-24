@@ -114,19 +114,26 @@ inputIsLessonsHover.value;
 
 # Triggers
 
-To launch a lesson or next level.
+To trigger the marble movement to a lesson or next level.
 
-Rive Input names:
+## Rive Input names:
 
 - `Trigger Lesson 1`
 - `Trigger Lesson 2`
-- `Trigger Lesson 3`
-- `Trigger Lesson 4`
-- `Trigger Lesson 5`
-- `Trigger Lesson 6`
+- ...
 - `Trigger Next Level`
 
 ## Setup in JS
+
+```js
+const inputLessonsTrigger = [];
+
+for (let i = 1; i <= lessons; i++) {
+	inputLessonsTrigger.push(
+		inputs.find((input) => input.name === `Trigger Lesson ${i}`)
+	);
+}
+```
 
 To fire the marble movement :
 
@@ -134,7 +141,7 @@ To fire the marble movement :
 inputLessonsTrigger[0].fire(); // movement to lesson 1
 ```
 
-Trigger movement from web
+To trigger movement from web
 
 ```html
 <div onclick="card1click()"></div>
