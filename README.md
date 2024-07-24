@@ -2,13 +2,11 @@
 
 [Live demo](https://guillaumecartoonbase.github.io/Pasqal-Floor_1/)
 
-## Rive Doc
+# Rive Doc
 
 [runtime](https://help.rive.app/runtimes/overview)
 
-## Doc
-
-## Responsiveness
+# Responsiveness
 
 Rive Input names:
 
@@ -21,7 +19,7 @@ Centers back itself when cursor is out of the canvas
 `responsiveShrink.value = 100`  
 0-100, overall centering then shrinking of the floor.
 
-### Coming Soon Status
+# Coming Soon Status
 
 To switch between "next" level coming soon" and "go to next level"
 
@@ -30,7 +28,7 @@ isNextLevelActive = inputs.find((i) => i.name === "isNextLevelActive");
 isNextLevelActive.value = false;
 ```
 
-### Lesson status
+# Lesson status
 
 To mark a lesson 'done'.
 (boolean, in array)
@@ -44,7 +42,7 @@ Rive Input names:
 - `isLesson5Done`
 - `isLesson6Done`
 
-#### Setup in JS
+## Setup in JS
 
 The value is in an array named `inputLessonsDone`.
 
@@ -60,7 +58,7 @@ inputLessonsDone[0].value = true; // lesson 1 marked done
 inputLessonsDone[5].value = false; // lesson 6 marked not done
 ```
 
-### Lesson Completion
+# Lesson Completion
 
 To show the completition percentage on the hover card.
 (integrer, 0-100)
@@ -74,7 +72,7 @@ Rive Input names:
 - `Lesson progress 5`
 - `Lesson progress 6`
 
-#### Setup in JS
+## Setup in JS
 
 ```js
 for (let i = 1; i <= lessons; i++) {
@@ -88,7 +86,7 @@ inputLessonsProgress[0].value = 25; // lesson 1 at 25%
 inputLessonsProgress[5].value = 100; // lesson 6 at 100%
 ```
 
-### Triggers
+# Triggers
 
 To launch a lesson or next level.
 
@@ -102,7 +100,7 @@ Rive Input names:
 - `Trigger Lesson 6`
 - `Trigger Next Level`
 
-#### Setup in JS
+## Setup in JS
 
 To fire the marble movement :
 
@@ -122,7 +120,7 @@ const card1click = () => {
 };
 ```
 
-### Hover
+# Hover
 
 To set the status hovering on the lessons
 (boolean)
@@ -155,7 +153,7 @@ const cardNoHover = (index) => {
 };
 ```
 
-### Player Status
+# Player Status
 
 To change the marble's color depending on the user profile.
 (integrer, 0-3)
@@ -169,21 +167,21 @@ Variable to edit in js: `playerID`
 
 Rive Input name: `playerProfile`
 
-#### Setup in JS
+## Setup in JS
 
 ```js
 playerSelector = inputs.find((i) => i.name === "playerProfile"); // get rive input
 playerSelector.value = playerID;
 ```
 
-### Events
+# Events
 
 Events return an object
 (booleans, integrers and strings can be used as value)
 
 `console.log()` are in place to show the result and timing.
 
-#### Lesson events
+## Lesson events
 
 ```js
 LessonEvent1 = { lesson: 1 };
@@ -192,13 +190,13 @@ LessonEvent2 = { lesson: 2 };
 NextLevelButton = { level: 2 };
 ```
 
-#### Cursor events
+## Cursor events
 
 - `OnHoverEnter`
 - `OnHoverExit`
 - `OnClick`
 
-#### Setup in JS
+## Setup in JS
 
 Current example:
 
