@@ -59,34 +59,6 @@ inputLessonsStarted[2].value = true; // lesson 2 marked done
 inputLessonsDone[5].value = false; // lesson 6 marked not done
 ```
 
-# Lesson Completion
-
-To show the completition percentage on the hover card.
-(integrer, 0-100)
-
-Rive Input names:
-
-- `Lesson progress 1`
-- `Lesson progress 2`
-- `Lesson progress 3`
-- `Lesson progress 4`
-- `Lesson progress 5`
-- `Lesson progress 6`
-
-## Setup in JS
-
-```js
-for (let i = 1; i <= lessons; i++) {
-	// Get lesson progress
-	inputLessonsProgress.push(
-		inputs.find((input) => input.name === `Lesson progress ${i}`)
-	);
-}
-
-inputLessonsProgress[0].value = 25; // lesson 1 at 25%
-inputLessonsProgress[5].value = 100; // lesson 6 at 100%
-```
-
 # Triggers
 
 To launch a lesson or next level.
