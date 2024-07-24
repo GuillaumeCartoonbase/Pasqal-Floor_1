@@ -18,10 +18,9 @@ responsiveShrink.value = 100;
 
 # Coming Soon Status
 
-To switch between "next" level coming soon" and "go to next level"
+To switch between "next" level coming soon" and "go to next level".
 
 ```js
-isNextLevelActive = inputs.find((i) => i.name === "isNextLevelActive");
 isNextLevelActive.value = false;
 ```
 
