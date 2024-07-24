@@ -58,7 +58,6 @@ function onLoadHandler() {
 	// Trigger marble to next level
 	triggerNextLevel = inputs.find((i) => i.name === "Trigger Next Level");
 
-	// Lesson counter
 	inputLessonsCounter = inputs.find((i) => i.name === "lessonCounter");
 
 	responsiveShrink = inputs.find((i) => i.name === "responsiveShrink");
@@ -80,7 +79,7 @@ window.addEventListener(
 	false
 );
 
-// Get Events
+// Events handling setup
 const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
 	const eventName = eventData.name;
