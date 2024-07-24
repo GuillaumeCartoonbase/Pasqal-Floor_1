@@ -176,61 +176,70 @@ playerSelector.value = playerID;
 
 # Events
 
-Events return an object
-(booleans, integrers and strings can be used as value)
-
-`console.log()` are in place to show the result and timing.
-
 ## Lesson events
 
-```js
-LessonEvent1 = { lesson: 1 };
-LessonEvent2 = { lesson: 2 };
-(...)
-NextLevelButton = { level: 2 };
-```
-
-## Cursor events
-
-- `OnHoverEnter`
-- `OnHoverExit`
-- `OnClick`
+- `On-1` : Marble arrived on lesson 1
+- `Off-1` : Marble left fron lesson 1
+- `cardbutton-1` : Lesson 1 from card
+- `LessonEvent-1` : To launch lesson 1
+- `cardbutton-next` : Next level from card
+- `NextLevelButton` To launch next level
+- `OnHoverEnter` : Cursor enters in interactive
+- `OnHoverExit` : Cursor exit from interactive
+- `OnClick` : Cursor click on interactive
 
 ## Setup in JS
 
 Current example:
 
 ```js
-// Get Events
 const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
 	const eventName = eventData.name;
 	const eventProperties = eventData.properties;
 
-	// Event logger
-	console.log("event name:", eventName);
-	console.log("event properties:", eventProperties);
+	const eventKey = eventName.split("-")[0];
+	const eventIndex = eventName.slice(-1);
 
-	// Fire marble movements from card's buttons
-	if (eventName.split(" ")[0] === "cardbutton") {
-		let cardButton = eventProperties.cardButton;
-		for (let i = 0; i < lessons; i++) {
-			if (cardButton === i + 1) return inputLessonsTrigger[i].fire();
-		}
-		if (cardButton === 200) return triggerNextLevel.fire();
+	switch (eventKey) {
+		// Fire marble movements from card's buttons
+		case "cardbutton":
+			if (eventIndex == "next") return triggerNextLevel.fire();
+			if (Number.isInteger(Number(eventIndex)))
+				return inputLessonsTrigger[eventIndex - 1].fire();
+			break;
+
+		// logic when marble arrives
+		case "On":
+			inputMarbleHover.value = true;
+
+			riveInstance.setBooleanStateAtPath(
+				"lessonHover",
+				true,
+				`Lesson ${eventIndex}`
+			);
+			break;
+
+		// logic when marble leaves
+		case "Off":
+			inputMarbleHover.value = false;
+
+			riveInstance.setBooleanStateAtPath(
+				"lessonHover",
+				false,
+				`Lesson ${eventIndex}`
+			);
+			break;
+
+		// Change pointer when hovering action
+		case "OnHoverEnter":
+			document.body.style.cursor = "pointer";
+			break;
+		case "OnHoverExit":
+			document.body.style.cursor = "auto";
+			break;
+		case "OnClick":
+			// Custom logic for click event
+			break;
 	}
-
-	// Change pointer when hovering action
-	if (eventName === "OnHoverEnter")
-		return (document.body.style.cursor = "pointer");
-	if (eventName === "OnHoverExit") return (document.body.style.cursor = "auto");
-	if (eventName === "OnClick") return console.log("clicked");
-
-	// Levitate marble when on a lesson, not in movement
-	if (eventName === "marbleLevitateON") return (inputMarbleHover.value = true);
-	if (eventName === "marbleLevitateOFF")
-		return (inputMarbleHover.value = false);
-};
-
-riveInstance.on(rive.EventType.RiveEvent, eventFire);
 ```

@@ -72,7 +72,7 @@ const riveInstance = new rive.Rive({
 		isResetting.value = true;
 
 		isNextLevelActive = inputs.find((i) => i.name === "isNextLevelActive");
-		isNextLevelActive.value = false;
+		isNextLevelActive.value = true;
 	},
 });
 
@@ -92,33 +92,37 @@ const eventFire = (riveEvent) => {
 	const eventProperties = eventData.properties;
 
 	const eventKey = eventName.split("-")[0];
+	const eventIndex = eventName.slice(-1);
 
-	// Event logger
 	// console.log( "", "event name:", eventName, "\n", "event properties:", eventProperties);
-	console.log("event name:", eventName);
 
 	switch (eventKey) {
 		// Fire marble movements from card's buttons
 		case "cardbutton":
-			let cardButton = eventProperties.cardButton;
-			for (let i = 0; i < lessons; i++) {
-				if (cardButton === i + 1) return inputLessonsTrigger[i].fire();
-			}
-			if (cardButton === 200) return triggerNextLevel.fire();
+			if (eventIndex == "next") return triggerNextLevel.fire();
+			if (Number.isInteger(Number(eventIndex)))
+				return inputLessonsTrigger[eventIndex - 1].fire();
 			break;
 
+		// logic when marble arrives
 		case "On":
+			inputMarbleHover.value = true;
+
 			riveInstance.setBooleanStateAtPath(
 				"lessonHover",
 				true,
-				`Lesson ${eventName.slice(-1)}`
+				`Lesson ${eventIndex}`
 			);
 			break;
+
+		// logic when marble leaves
 		case "Off":
+			inputMarbleHover.value = false;
+
 			riveInstance.setBooleanStateAtPath(
 				"lessonHover",
 				false,
-				`Lesson ${eventName.slice(-1)}`
+				`Lesson ${eventIndex}`
 			);
 			break;
 
@@ -130,15 +134,9 @@ const eventFire = (riveEvent) => {
 			document.body.style.cursor = "auto";
 			break;
 		case "OnClick":
+			// Custom logic for click event
 			break;
 
-		// Levitate marble when on a lesson, not in movement
-		case "marbleLevitateON":
-			inputMarbleHover.value = true;
-			break;
-		case "marbleLevitateOFF":
-			inputMarbleHover.value = false;
-			break;
 		default:
 			console.log("Unhandled event:", eventName);
 			break;
