@@ -29,6 +29,8 @@ function onLoadHandler() {
 	playerSelector = inputs.find((i) => i.name === "playerProfile");
 	playerSelector.value = playerID;
 
+	inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
+
 	for (let i = 1; i <= lessons; i++) {
 		// Get lesson started status
 		// inputLessonsStarted[0].value = true; (true, false)
@@ -64,7 +66,6 @@ function onLoadHandler() {
 
 	// Lesson counter
 	inputLessonsCounter = inputs.find((i) => i.name === "lessonCounter");
-	inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
 
 	responsiveShrink = inputs.find((i) => i.name === "responsiveShrink");
 	responsiveShrink.value = 0;
