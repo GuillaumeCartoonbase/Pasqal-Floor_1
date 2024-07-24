@@ -8,6 +8,15 @@
 
 ## Doc
 
+### Coming Soon Status
+
+To switch between "next" level coming soon" and "go to next level"
+
+```js
+isNextLevelActive = inputs.find((i) => i.name === "isNextLevelActive");
+isNextLevelActive.value = false;
+```
+
 ### Lesson status
 
 To mark a lesson 'done'.
