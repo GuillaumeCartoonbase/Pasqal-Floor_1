@@ -1,13 +1,5 @@
 const stateMachine = "First Floor";
 
-const lessons = 6; // Number of lessons
-const inputLessonsStarted = []; // Lessons status
-const inputLessonsDone = []; // Lessons status
-const inputLessonsProgress = []; // Lessons progress
-const inputLessonsTrigger = []; // Lesson trigger movement
-
-const inputIsLessonHover = []; // Lesson trigger movement
-
 // Create Rive
 const riveInstance = new rive.Rive({
 	src: "src/floor-1.riv", //get rive file
@@ -18,6 +10,13 @@ const riveInstance = new rive.Rive({
 	onLoad: onLoadHandler,
 });
 
+const lessons = 6; // Number of lessons
+const inputLessonsStarted = []; // Lessons status
+const inputLessonsDone = []; // Lessons status
+const inputIsLessonHover = []; // Lesson trigger movement
+const inputLessonsTrigger = []; // Lesson trigger movement
+
+// Handle the onLoad event
 function onLoadHandler() {
 	// Prevent a blurry canvas by using the device pixel ratio
 	riveInstance.resizeDrawingSurfaceToCanvas();
