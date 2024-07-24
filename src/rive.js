@@ -44,15 +44,15 @@ function onLoadHandler() {
 			inputs.find((input) => input.name === `isLesson${i}Done`)
 		);
 
+		// Hover effect
+		inputIsLessonsHover.push(
+			inputs.find((input) => input.name === `Lesson ${i} Hover`)
+		);
+
 		// Triggers marble animation
 		// inputLessonsTrigger[0].fire()
 		inputLessonsTrigger.push(
 			inputs.find((input) => input.name === `Trigger Lesson ${i}`)
-		);
-
-		// Change lesson hovering status
-		inputIsLessonsHover.push(
-			inputs.find((input) => input.name === `Lesson ${i} Hover`)
 		);
 	}
 	// Trigger marble to next level
