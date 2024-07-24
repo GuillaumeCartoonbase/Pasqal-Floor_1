@@ -8,6 +8,19 @@
 
 ## Doc
 
+## Responsiveness
+
+Rive Input names:
+
+- `isResetting`
+- `responsiveShrink`
+
+`isResetting.value = true`  
+Centers back itself when cursor is out of the canvas
+
+`responsiveShrink.value = 100`  
+0-100, overall centering then shrinking of the floor.
+
 ### Coming Soon Status
 
 To switch between "next" level coming soon" and "go to next level"
