@@ -4,6 +4,7 @@ const stateMachine = "First Floor";
 const riveInstance = new rive.Rive({
 	src: "src/floor-1.riv", //get rive file
 	canvas: document.getElementById("firstFloor"), //get correct canvas
+	artboard: "First Floor B",
 	autoplay: true,
 	stateMachines: stateMachine, // get correct stateMachine
 	automaticallyHandleEvents: true, // Automatically handle RiveHTTPEvents
@@ -68,6 +69,10 @@ function onLoadHandler() {
 
 	isNextLevelActive = inputs.find((i) => i.name === "isNextLevelActive");
 	isNextLevelActive.value = true;
+
+	riveInstance.setNumberStateAtPath("nLesson", lessons, "compteur"); // number of lesson checkers
+	riveInstance.setTextRunValueAtPath("lessonsTotal", lessons, "compteur"); // total lessons number
+	riveInstance.setTextRunValueAtPath("lessonsLearned", "2", "compteur"); // current lessons done
 }
 
 // Resize the drawing surface if the window resizes
