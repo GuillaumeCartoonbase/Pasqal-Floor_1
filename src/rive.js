@@ -81,11 +81,7 @@ function onLoadHandler() {
 	);
 
 	// current lessons done
-	riveInstance.setTextRunValueAtPath(
-		"lessonsLearned",
-		lessonCounter.toString(),
-		"compteur"
-	);
+	riveInstance.setTextRunValueAtPath("lessonsLearned", 0, "compteur");
 }
 
 // Resize the drawing surface if the window resizes
@@ -197,5 +193,11 @@ const lessonCounter = () => {
 		total += inputLessonsDone[i].value == true ? 1 : 0;
 	}
 	inputLessonsCounter.value = total;
+
+	riveInstance.setTextRunValueAtPath(
+		"lessonsLearned",
+		total.toString(),
+		"compteur"
+	);
 	return total;
 };
