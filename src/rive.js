@@ -13,7 +13,7 @@ const riveInstance = new rive.Rive({
 
 const lessons = 6; // Number of lessons
 const inputLessonsStarted = []; // Lessons status
-const inputLessonsDone = []; // Lessons status
+const lessonsDone = []; // Lessons status
 const inputIsLessonsHover = []; // Lesson pointer hover
 const inputLessonsTrigger = []; // Lesson trigger movement
 
@@ -40,9 +40,8 @@ function onLoadHandler() {
 		);
 
 		// Get lesson done status
-		// inputLessonsDone[0].value = true; (true, false)
-		inputLessonsDone.push(
-			inputs.find((input) => input.name === `isLesson${i}Done`)
+		lessonsDone.push(
+			riveInstance.retrieveInputAtPath(`isDone${i}`, "compteur").asBool().value
 		);
 
 		// Hover effect
@@ -169,8 +168,8 @@ for (let i = 1; i <= lessons; i++) {
 // Switcher lesson done status from HTML
 lessonCheckboxes.forEach((checkbox, index) => {
 	checkbox.addEventListener("change", (e) => {
-		inputLessonsDone[index].value = e.target.checked;
-		inputLessonsCounter.value = lessonCounter();
+		// lessonsDone[index].value = e.target.checked;
+		// lessonsCounter.value = lessonCounter();
 	});
 });
 
@@ -190,9 +189,8 @@ const cardClick = (index) => {
 const lessonCounter = () => {
 	let total = 0;
 	for (let i = 0; i < lessons; i++) {
-		total += inputLessonsDone[i].value == true ? 1 : 0;
+		total += lessonsDone[i] == true ? 1 : 0;
 	}
-	inputLessonsCounter.value = total;
 
 	riveInstance.setTextRunValueAtPath(
 		"lessonsLearned",
@@ -201,3 +199,9 @@ const lessonCounter = () => {
 	);
 	return total;
 };
+
+function lessonNdone(n) {
+	riveInstance.setBooleanStateAtPath(`isDone${n}`, true, "compteur");
+	lessonsDone[n - 1] = true;
+	lessonCounter();
+}
