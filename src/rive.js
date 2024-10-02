@@ -70,9 +70,22 @@ function onLoadHandler() {
 	isNextLevelActive = inputs.find((i) => i.name === "isNextLevelActive");
 	isNextLevelActive.value = true;
 
-	riveInstance.setNumberStateAtPath("nLesson", lessons, "compteur"); // number of lesson checkers
-	riveInstance.setTextRunValueAtPath("lessonsTotal", lessons, "compteur"); // total lessons number
-	riveInstance.setTextRunValueAtPath("lessonsLearned", "2", "compteur"); // current lessons done
+	// number of lesson checkers
+	riveInstance.setNumberStateAtPath("nLesson", lessons, "compteur");
+
+	// total lessons number
+	riveInstance.setTextRunValueAtPath(
+		"lessonsTotal",
+		lessons.toString(),
+		"compteur"
+	);
+
+	// current lessons done
+	riveInstance.setTextRunValueAtPath(
+		"lessonsLearned",
+		lessonCounter.toString(),
+		"compteur"
+	);
 }
 
 // Resize the drawing surface if the window resizes
