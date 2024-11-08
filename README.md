@@ -243,3 +243,15 @@ const eventFire = (riveEvent) => {
 			break;
 	}
 ```
+
+# Cards
+
+Use `stopLoader()` to stop the start button on the cards from spinnning and reset it's status
+(the same button is used for every cards)
+
+```js
+// Stop start button from loading in loop
+const stopLoader = () => {
+	return riveInstance.fireStateAtPath("backTostart", "button start");
+};
+```
