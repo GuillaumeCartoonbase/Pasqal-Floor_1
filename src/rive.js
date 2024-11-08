@@ -65,7 +65,6 @@ function onLoadHandler() {
 	inputLessonsCounter = inputs.find((i) => i.name === "lessonCounter");
 
 	responsiveShrink = inputs.find((i) => i.name === "responsiveShrink");
-	responsiveShrink.value = 0;
 
 	isResetting = inputs.find((i) => i.name === "isResetting");
 	isResetting.value = true;
@@ -87,6 +86,11 @@ function onLoadHandler() {
 // Stop start button from loading in loop
 const stopLoader = () => {
 	return riveInstance.fireStateAtPath("backTostart", "button start");
+};
+
+const shrink = (percent) => {
+	responsiveShrink.value = percent;
+	return responsiveShrink;
 };
 
 // Resize the drawing surface if the window resizes

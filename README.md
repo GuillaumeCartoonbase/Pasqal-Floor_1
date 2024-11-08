@@ -9,11 +9,11 @@ Refer to the [Rive runtime documentation](https://help.rive.app/runtimes/overvie
 Rive Input names:
 
 - `isResetting` : Centers back itself when the cursor is out of the canvas.
-- `responsiveShrink` : Ranges from 0-100, for overall centering then shrinking of the floor.
+- `shrink()` : Ranges from 0-100, for overall centering then shrinking of the floor.
 
 ```js
 isResetting.value = true;
-responsiveShrink.value = 100;
+shrink(100);
 ```
 
 # Coming Soon Status
