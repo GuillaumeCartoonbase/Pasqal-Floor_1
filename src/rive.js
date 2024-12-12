@@ -136,11 +136,14 @@ const eventFire = (riveEvent) => {
 		case "Off":
 			inputMarbleHover.value = false;
 
-			riveInstance.setBooleanStateAtPath(
-				"lessonHover",
-				false,
-				`Lesson ${eventIndex}`
-			);
+			if (eventIndex != 0) {
+				riveInstance.setBooleanStateAtPath(
+					"lessonHover",
+					false,
+					`Lesson ${eventIndex}`
+				);
+			}
+
 			break;
 
 		// Change pointer when hovering action
