@@ -130,6 +130,8 @@ const eventFire = (riveEvent) => {
 				true,
 				`Lesson ${eventIndex}`
 			);
+
+			isMoving(false);
 			break;
 
 		// logic when marble leaves
@@ -144,6 +146,7 @@ const eventFire = (riveEvent) => {
 				);
 			}
 
+			isMoving(true);
 			break;
 
 		// Change pointer when hovering action
