@@ -216,3 +216,9 @@ function lessonNdone(n, status) {
 	haloLessonActive[n - 1].value = result;
 	lessonCounter();
 }
+
+function isMoving(status) {
+	inputs = riveInstance.stateMachineInputs(stateMachine);
+	move = inputs.find((i) => i.name === "isMoving");
+	return (move.value = status);
+}
