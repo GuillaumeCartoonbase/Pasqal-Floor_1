@@ -114,6 +114,10 @@ const eventFire = (riveEvent) => {
 	// console.log( "", "event name:", eventName, "\n", "event properties:", eventProperties);
 
 	switch (eventKey) {
+		case "lessonHover":
+			card(eventIndex);
+			break;
+
 		// Fire marble movements from card's buttons
 		case "cardbutton":
 			if (eventName.split("-")[1] == "next") return triggerNextLevel.fire();
@@ -227,4 +231,74 @@ function isMoving(status) {
 	inputs = riveInstance.stateMachineInputs(stateMachine);
 	move = inputs.find((i) => i.name === "isMoving");
 	return (move.value = status);
+}
+
+const lesson = [
+	{
+		number: "01",
+		title: "Fundamental principles",
+		duration: "9",
+	},
+	{
+		number: "02",
+		title: "Quantum speedup",
+		duration: "8",
+	},
+	{
+		number: "03",
+		title: "Hardware platforms",
+		duration: "13",
+	},
+	{
+		number: "04",
+		title: "Development roadmap",
+		duration: "11",
+	},
+	{
+		number: "05",
+		title: "Quantum computing as a service",
+		duration: "9",
+	},
+	{
+		number: "06",
+		title: "Business use cases",
+		duration: "11",
+	},
+	{
+		number: "",
+		duration: "",
+		title: "Lesson 2",
+		descrNext: "The mathematics behind quantum computing",
+	},
+];
+
+function card(index) {
+	riveInstance.setTextRunValueAtPath(
+		"lessonNumber",
+		lesson[index - 1].number,
+		"card"
+	);
+	riveInstance.setTextRunValueAtPath(
+		"lessonTitle",
+		lesson[index - 1].title,
+		"card"
+	);
+	riveInstance.setTextRunValueAtPath(
+		"lessonTime",
+		lesson[index - 1].duration,
+		"card"
+	);
+
+	if (index == "next") {
+		riveInstance.setTextRunValueAtPath(
+			"nextTitle",
+			lesson[index - 1].title,
+			"card"
+		);
+		riveInstance.setTextRunValueAtPath(
+			"descrNext",
+			lesson[index - 1].descrNext,
+			"card"
+		);
+	}
 }
