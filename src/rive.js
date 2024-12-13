@@ -261,3 +261,21 @@ const lesson = [
 		duration: 7,
 	},
 ];
+
+function card(index) {
+	riveInstance.setTextRunValueAtPath(
+		"lessonNumber",
+		lesson[index - 1].number,
+		"card"
+	);
+	riveInstance.setTextRunValueAtPath(
+		"lessonTitle",
+		lesson[index - 1].title,
+		"card"
+	);
+	riveInstance.setTextRunValueAtPath(
+		"lessonTime",
+		lesson[index - 1].duration,
+		"card"
+	);
+}
