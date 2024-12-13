@@ -235,34 +235,40 @@ function isMoving(status) {
 
 const lesson = [
 	{
-		number: "1",
-		title: "first title",
-		duration: "7",
+		number: "01",
+		title: "Fundamental principles",
+		duration: "9",
 	},
 	{
-		number: 2,
-		title: "first title",
-		duration: 7,
+		number: "02",
+		title: "Quantum speedup",
+		duration: "8",
 	},
 	{
-		number: 3,
-		title: "first title",
-		duration: 7,
+		number: "03",
+		title: "Hardware platforms",
+		duration: "13",
 	},
 	{
-		number: 4,
-		title: "first title",
-		duration: 7,
+		number: "04",
+		title: "Development roadmap",
+		duration: "11",
 	},
 	{
-		number: 5,
-		title: "first title",
-		duration: 7,
+		number: "05",
+		title: "Quantum computing as a service",
+		duration: "9",
 	},
 	{
-		number: 6,
-		title: "first title",
-		duration: 7,
+		number: "06",
+		title: "Business use cases",
+		duration: "11",
+	},
+	{
+		number: "",
+		duration: "",
+		title: "Lesson 2",
+		descrNext: "The mathematics behind quantum computing",
 	},
 ];
 
