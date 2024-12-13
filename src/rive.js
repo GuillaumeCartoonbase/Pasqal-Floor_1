@@ -228,3 +228,36 @@ function isMoving(status) {
 	move = inputs.find((i) => i.name === "isMoving");
 	return (move.value = status);
 }
+
+const lesson = [
+	{
+		number: "1",
+		title: "first title",
+		duration: "7",
+	},
+	{
+		number: 2,
+		title: "first title",
+		duration: 7,
+	},
+	{
+		number: 3,
+		title: "first title",
+		duration: 7,
+	},
+	{
+		number: 4,
+		title: "first title",
+		duration: 7,
+	},
+	{
+		number: 5,
+		title: "first title",
+		duration: 7,
+	},
+	{
+		number: 6,
+		title: "first title",
+		duration: 7,
+	},
+];
