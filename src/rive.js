@@ -288,4 +288,17 @@ function card(index) {
 		lesson[index - 1].duration,
 		"card"
 	);
+
+	if (index == "next") {
+		riveInstance.setTextRunValueAtPath(
+			"nextTitle",
+			lesson[index - 1].title,
+			"card"
+		);
+		riveInstance.setTextRunValueAtPath(
+			"descrNext",
+			lesson[index - 1].descrNext,
+			"card"
+		);
+	}
 }
