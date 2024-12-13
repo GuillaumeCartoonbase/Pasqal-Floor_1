@@ -114,6 +114,10 @@ const eventFire = (riveEvent) => {
 	// console.log( "", "event name:", eventName, "\n", "event properties:", eventProperties);
 
 	switch (eventKey) {
+		case "lessonHover":
+			card(eventIndex);
+			break;
+
 		// Fire marble movements from card's buttons
 		case "cardbutton":
 			if (eventName.split("-")[1] == "next") return triggerNextLevel.fire();
